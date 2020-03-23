@@ -11,9 +11,10 @@
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
 
-#my ignored assets
-*Assets_Connectors/
-*Assets_Models/
+# my ignored assets
+# *Assets_Connectors/
+# *Assets_Models/
+*Assets_*/ 
 
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
