@@ -991,8 +991,9 @@ MonoBehaviour:
   - {fileID: 1670940772815160, guid: 69432648383480e49b833bbf0d0a2368, type: 3}
   - {fileID: 1673048466801698, guid: 77f2d25fe7dc43a4cb453be5d945f03d, type: 3}
   startPos: {x: 0.5, y: 3, z: -2}
-  moveSpeed: 0.01
+  moveSpeed: 0.2
   scaleFactor: 1.1
+  building: {fileID: 1413809774}
 --- !u!1 &1334166940
 GameObject:
   m_ObjectHideFlags: 0

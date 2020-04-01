@@ -894,9 +894,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1100213844}
-  - component: {fileID: 1100213847}
   - component: {fileID: 1100213846}
   - component: {fileID: 1100213848}
+  - component: {fileID: 1100213843}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -904,6 +904,53 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1100213843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1100213842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0d2914e8a7f3704b97dd17dd3de86dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baccaro:
+  - {fileID: 1627571138099868, guid: 0bc8efe23441cd640a17626141ff45e4, type: 3}
+  - {fileID: 1951674573375690, guid: f2be158ae66a08441a026293a90c7090, type: 3}
+  - {fileID: 1592080964498364, guid: b80474f341f64bb47b19d211e4e88788, type: 3}
+  brimnes:
+  - {fileID: 1523688349317762, guid: 9f1c121436aa0e346aaf02e5ed5d355e, type: 3}
+  - {fileID: 1034017601957916, guid: cabcea21a53bd26418a29477d5e07e78, type: 3}
+  - {fileID: 1364780595825722, guid: b2c0d89b99920e84683d44682464766c, type: 3}
+  - {fileID: 1521193233401660, guid: 24ac820ce112fb64ab619e6ffb508807, type: 3}
+  - {fileID: 1128718481055940, guid: 1c2c476205f98e34fb7b28433fc4f2c3, type: 3}
+  - {fileID: 1465014831532462, guid: 895715339751a6042acd31c9283ea2f6, type: 3}
+  arkelstorp:
+  - {fileID: 1344556500521498, guid: 7ee350ca2ddc3a642889e6cfa9aa9ee1, type: 3}
+  - {fileID: 1695476454031234, guid: c1128db0c2cfa1d4f8418e007d8df428, type: 3}
+  - {fileID: 1680842771764710, guid: 3dbeea18b45133046bb9e3fa65b45bc5, type: 3}
+  solsta:
+  - {fileID: 1178777185703466, guid: 988ab8dfa71bf0a4491553de7d0cb255, type: 3}
+  - {fileID: 1430010110334148, guid: 27b3b68b17b294544beae307e84f7e13, type: 3}
+  - {fileID: 1600620691685388, guid: b059ce02aee7bf3449d132971fbaa3cb, type: 3}
+  tullsta:
+  - {fileID: 1915622161944980, guid: 11678ad456bbb264a9e1a2e07758ad09, type: 3}
+  - {fileID: 1502249684889292, guid: 01818b8e0c2ca4f4c90a471cdb1bfbcd, type: 3}
+  - {fileID: 1805431485643478, guid: 134e0b1a0b3378a4cae059527ac5ca37, type: 3}
+  likseleLevos:
+  - {fileID: 1149969266597622, guid: fd9a013585a5caa4abed8e6da0fe4ffb, type: 3}
+  - {fileID: 1584436983752188, guid: 76aec3f6c79a30140ba7593d0696c0af, type: 3}
+  - {fileID: 1790388116574294, guid: 5b8b1edad8cba3c4e834cf95a26d36da, type: 3}
+  kautsbi:
+  - {fileID: 1670940772815160, guid: 69432648383480e49b833bbf0d0a2368, type: 3}
+  - {fileID: 1406353294546696, guid: ec096507caede0c4886ce110f1ec944b, type: 3}
+  - {fileID: 1653119151962950, guid: 20de94819e315bc4281c233c78555032, type: 3}
+  odwar:
+  - {fileID: 1226325330599220, guid: 0aae1df3422d4a740be8e077a91f2e6b, type: 3}
+  - {fileID: 1104808011888504, guid: 7afea474f47c7af4384d5f6a5d39d8f3, type: 3}
+  - {fileID: 1528250271039200, guid: 41ac53a0da945b14191522853234b7c6, type: 3}
 --- !u!4 &1100213844
 Transform:
   m_ObjectHideFlags: 0
@@ -931,44 +978,6 @@ Grid:
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 1
---- !u!114 &1100213847
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1100213842}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d72d7e570ad372e4a881770ebed5230d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ariesFurniture:
-  - {fileID: 1627571138099868, guid: 0bc8efe23441cd640a17626141ff45e4, type: 3}
-  - {fileID: 1521193233401660, guid: 24ac820ce112fb64ab619e6ffb508807, type: 3}
-  - {fileID: 1344556500521498, guid: 7ee350ca2ddc3a642889e6cfa9aa9ee1, type: 3}
-  - {fileID: 1178777185703466, guid: 988ab8dfa71bf0a4491553de7d0cb255, type: 3}
-  taurusFurniture:
-  - {fileID: 1805431485643478, guid: 134e0b1a0b3378a4cae059527ac5ca37, type: 3}
-  - {fileID: 1584436983752188, guid: 76aec3f6c79a30140ba7593d0696c0af, type: 3}
-  - {fileID: 1670940772815160, guid: 69432648383480e49b833bbf0d0a2368, type: 3}
-  - {fileID: 1673048466801698, guid: 77f2d25fe7dc43a4cb453be5d945f03d, type: 3}
-  defaultFurniture: {fileID: 1915622161944980, guid: 11678ad456bbb264a9e1a2e07758ad09,
-    type: 3}
-  startPos: {x: 0.5, y: 3, z: -2}
-  moveSpeed: 0.01
-  scaleFactor: 1.02
-  camTarget: {fileID: 1829550659}
-  cam: {fileID: 368024363}
-  camBounds:
-  - {x: 2, y: 4.6, z: -4}
-  - {x: 2, y: 4.6, z: 4}
-  - {x: -2, y: 4.6, z: 4}
-  - {x: -2, y: 4.6, z: -4}
-  p1Score: 0
-  p2Score: 0
-  p1Text: {fileID: 110035016}
-  p2Text: {fileID: 1435138477}
 --- !u!114 &1100213848
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -981,6 +990,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d9088585b8ce064ba5d9f194c5792f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  furnitureShowroom: {fileID: 0}
   flatpackArray:
   - {fileID: 1627571138099868, guid: 0bc8efe23441cd640a17626141ff45e4, type: 3}
   - {fileID: 1521193233401660, guid: 24ac820ce112fb64ab619e6ffb508807, type: 3}
@@ -991,8 +1001,9 @@ MonoBehaviour:
   - {fileID: 1670940772815160, guid: 69432648383480e49b833bbf0d0a2368, type: 3}
   - {fileID: 1673048466801698, guid: 77f2d25fe7dc43a4cb453be5d945f03d, type: 3}
   startPos: {x: 0.5, y: 3, z: -2}
-  moveSpeed: 0.01
+  moveSpeed: 0.2
   scaleFactor: 1.1
+  building: {fileID: 1413809774}
 --- !u!1 &1334166940
 GameObject:
   m_ObjectHideFlags: 0

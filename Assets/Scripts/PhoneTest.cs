@@ -9,11 +9,16 @@ public class PhoneTest : MonoBehaviour
     private SocketIOComponent socket;
 
     //furniture models
+    public FurnitureShowroom furnitureShowroom;
+    public GameObject[][] showroom;
     // [SerializeField] GameObject[] furniture_player1 = new GameObject[4];
     // [SerializeField] GameObject[] furniture_player2 = new GameObject[4];
     [SerializeField] GameObject[] flatpackArray = new GameObject[8];
     private int furniturePerPlayer = 4;
     private int flatpackIndex = 0;
+
+    //new color stuff
+    private int colorIndex = 0;
     
     //interface variables
     private int p1Type = 0;
@@ -24,12 +29,16 @@ public class PhoneTest : MonoBehaviour
     private float vertOffset = 0;
     private int furnitureCount = 0;
     private GameObject lastFurniture;
+    private float moveDirection = 1f;
 
     //locations & movement
     [SerializeField] Vector3 startPos; //set in inspector
     private Vector3 furniturePos;
     [SerializeField] float moveSpeed = .01f; 
     [SerializeField] float scaleFactor = 1.1f;
+    [SerializeField] GameObject building;
+    
+    private Transform furnitureTransform;
 
     //camera stuff
     /*
@@ -61,20 +70,24 @@ public class PhoneTest : MonoBehaviour
 		// StartCoroutine("BeepBoop");
         socket.On("drop", DropFurniture); //slappa
         socket.On("type", ChangeType); //beskrivning
+        socket.On("color", ChangeColor); //farg
         socket.On("rotate", ChangeRotation); //vinkel
         socket.On("scale", ChangeScale); //skalla
         socket.On("move", MoveFurniture); //plats
 
-        
-
+        furnitureShowroom = gameObject.GetComponent<FurnitureShowroom>();
+        showroom = gameObject.GetComponent<FurnitureShowroom>().showroom;
         //should I not start() until the socket is connected? might move later if so
         
         //starting postions
-        furniturePos = startPos;
+        furniturePos = startPos; //deprecated?
+        // furnitureTransform.position = startPos;
         // camPos = cam.transform.position;
 
         //first spawn
-        SpawnNextFurniture(flatpackArray[flatpackIndex]);
+        SpawnNextFurniture(showroom[flatpackIndex][colorIndex], furniturePos, Quaternion.identity);
+
+        // SpawnNextFurniture(flatpackArray[flatpackIndex]);
         // GameObject spawnedFurniture = Instantiate(flatpackArray[flatpackIndex], furniturePos, Quaternion.identity);
         // spawnedFurniture.name = "furn_" + furnitureCount;
         // spawnedFurniture.layer = 9;
@@ -158,15 +171,21 @@ public class PhoneTest : MonoBehaviour
         //auto spawning now
         if (!isFloating) //so right after they slappa
         {
-            SpawnNextFurniture(flatpackArray[flatpackIndex]);
+            // SpawnNextFurniture(flatpackArray[flatpackIndex]);
+            // SpawnNextFurniture(showroom[flatpackIndex][colorIndex]);
+            SpawnNextFurniture(lastFurniture, furnitureTransform.position, furnitureTransform.rotation);
+
+            
 
         }
     }
 
-    public void SpawnNextFurniture(GameObject furniture)
+    public void SpawnNextFurniture(GameObject furniture, Vector3 furniturePosition, Quaternion furnitureRotation) //need to reconcile parameters vs global pos/rotation
     {
-        //now spawns last furniture type
-        GameObject spawnedFurniture = Instantiate(furniture, furniturePos, Quaternion.identity);
+        Debug.Log("spawn test: " + furniture.name);
+        // GameObject spawnedFurniture = Instantiate(furniture, furniturePos, furniture.transform.rotation);
+        GameObject spawnedFurniture = Instantiate(furniture, furniturePosition, furnitureRotation);
+
         spawnedFurniture.name = "furn_" + furnitureCount;
         spawnedFurniture.layer = 9;
         spawnedFurniture.GetComponent<Rigidbody>().useGravity = false;
@@ -177,6 +196,7 @@ public class PhoneTest : MonoBehaviour
     {
         GameObject droppedFurniture = GameObject.Find("furn_" + furnitureCount);
         lastFurniture = droppedFurniture;
+        furnitureTransform = droppedFurniture.transform;
         droppedFurniture.layer = 0;
         droppedFurniture.GetComponent<Rigidbody>().useGravity = true;
         furnitureCount++;
@@ -186,7 +206,8 @@ public class PhoneTest : MonoBehaviour
     public void ChangeType(SocketIOEvent e) //BESKRIVNING
     {
         float player = e.data.GetField("player").f;
-        Debug.Log(player);
+        // Debug.Log(player);
+
         if (player == 1f)
         {
             if (p1Type < 3)
@@ -204,8 +225,28 @@ public class PhoneTest : MonoBehaviour
             flatpackIndex = p2Type + furniturePerPlayer;
         }
         GameObject destroyedFurniture = GameObject.Find("furn_" + furnitureCount);
+        furnitureTransform = destroyedFurniture.transform;
         Destroy(destroyedFurniture);
-        SpawnNextFurniture(flatpackArray[flatpackIndex]);        
+
+        //reset color index to prevent errors from jagged arrays out of bounds
+        colorIndex = 0;
+
+        // SpawnNextFurniture(flatpackArray[flatpackIndex]); 
+        SpawnNextFurniture(showroom[flatpackIndex][colorIndex], furnitureTransform.position, furnitureTransform.rotation);        
+    }
+
+    public void ChangeColor(SocketIOEvent e) //Farg
+    {
+        if (colorIndex < showroom[flatpackIndex].Length - 1)
+            colorIndex++;
+        else
+            colorIndex = 0;
+        GameObject destroyedFurniture = GameObject.Find("furn_" + furnitureCount);
+        furnitureTransform = destroyedFurniture.transform;
+        Destroy(destroyedFurniture);
+
+        // SpawnNextFurniture(flatpackArray[flatpackIndex]); 
+        SpawnNextFurniture(showroom[flatpackIndex][colorIndex], furnitureTransform.position, furnitureTransform.rotation); 
     }
 
     public void ChangeRotation(SocketIOEvent e) //VINKEL
@@ -215,7 +256,7 @@ public class PhoneTest : MonoBehaviour
         if (player == 1)
             rotatedFurniture.transform.Rotate(0,p1Rotate,0, Space.Self);
         if (player == 2)
-            rotatedFurniture.transform.Rotate(0,p2Rotate,0, Space.Self);
+            rotatedFurniture.transform.Rotate(p2Rotate,0,0, Space.Self);
 
         //should maybe try and keep rotation same after type or slappa?
     }
@@ -232,6 +273,28 @@ public class PhoneTest : MonoBehaviour
 
     public void MoveFurniture(SocketIOEvent e) //PLATS
     {
+        float player = e.data.GetField("player").f;
+        GameObject movedFurniture = GameObject.Find("furn_" + furnitureCount);
+        if (player == 1)
+            if (movedFurniture.transform.position.x < building.transform.localScale.x/2f && moveDirection == 1f ||
+                movedFurniture.transform.position.x > -building.transform.localScale.x/2f && moveDirection == -1f)
+                movedFurniture.transform.position += new Vector3(moveSpeed * moveDirection, 0f, 0f);
+            else
+            {
+                moveDirection *= -1f;
+                movedFurniture.transform.position += new Vector3(moveSpeed * moveDirection, 0f, 0f);
+            }
+        if (player == 2)
+            if (movedFurniture.transform.position.z < building.transform.localScale.z/2f && moveDirection == 1f ||
+                movedFurniture.transform.position.z > building.transform.localScale.z/-2f && moveDirection == -1f)
+                movedFurniture.transform.position += new Vector3(0f, 0f, moveSpeed * moveDirection);
+            else
+            {
+                moveDirection *= -1f;
+                movedFurniture.transform.position += new Vector3(0f, 0f, moveSpeed * moveDirection);
+            }
+        // furnitureTransform.position = movedFurniture.transform.position;
+        
         //to add later, should maybe keep it to one axis/one button, so to change direction you have to go to the bounds of either side?
     }
 
