@@ -2,16 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using SocketIO;
+
 
 
 //Ikea Sans font thanks to http://www.onlinewebfonts.com, licensed by CC BY 3.0
 
 public class LevelManager : MonoBehaviour
 {
+    private SocketIOComponent socket;
+    public PhoneTest phoneTest;
+
+    //players
+    public Dictionary<float, string> players = new Dictionary<float, string>();
+    private string tutorialPlayerName;
+
     //should I have these in an array or list of some sort?
     //game object over canvas because .setActive()
     [SerializeField] GameObject startScreen;
     [SerializeField] GameObject tutorialScreen;
+    [SerializeField] Text welcomeText;
+    [SerializeField] Text slappaText;
     private GameObject tutorialCanvas;
     [SerializeField] GameObject level1Screen;
 
@@ -26,6 +37,13 @@ public class LevelManager : MonoBehaviour
 
     void Start()
     {
+        //socket stuff, for now keeping all buttons in PhoneTest.cs
+        GameObject go = GameObject.Find("SocketIO");
+		socket = go.GetComponent<SocketIOComponent>();
+        socket.On("ready", ReadyPlayer);
+
+        phoneTest = gameObject.GetComponent<PhoneTest>();
+
         startScreen.SetActive(true);
         tutorialScreen.SetActive(false);
         level1Screen.SetActive(false);
@@ -54,85 +72,68 @@ public class LevelManager : MonoBehaviour
                 switch (tutorialStage)
                 {
                     case "ReadyPanel":
-                        if (testInt > testLimit)
-                        {
-                            tutorialStage = "WelcomePanel";
-                            testInt = 0;
-                        }
-                        else
-                            testInt++;
+                        Debug.Log("waiting for player");
                         break;
                     case "WelcomePanel":
-                        if (testInt > testLimit)
-                        {
-                            tutorialStage = "SlappaPanel";
-                            testInt = 0;
-                        }
-                        else
-                            testInt++;
+                        Debug.Log("welcome screen");
+                        welcomeText.text = "Welcome " + players[1f] + "! \n Press Ready to Begin.";
                         break;
                     case "SlappaPanel":
-                        if (testInt > testLimit)
-                        {
-                            tutorialStage = "VinkelPanel";
-                            testInt = 0;
-                        }
-                        else
-                            testInt++;
+                        slappaText.text = "Welcome " + tutorialPlayerName + "! \n To begin, \n Slappa the Tullsta!";
                         break;
                     case "VinkelPanel":
-                        if (testInt > testLimit)
-                        {
-                            tutorialStage = "BeskrivningPanel";
-                            testInt = 0;
-                        }
-                        else
-                            testInt++;
+                        // if (testInt > testLimit)
+                        // {
+                        //     tutorialStage = "BeskrivningPanel";
+                        //     testInt = 0;
+                        // }
+                        // else
+                        //     testInt++;
                         break;
                     case "BeskrivningPanel":
-                        if (testInt > testLimit)
-                        {
-                            tutorialStage = "SkalaPanel";
-                            testInt = 0;
-                        }
-                        else
-                            testInt++;
+                        // if (testInt > testLimit)
+                        // {
+                        //     tutorialStage = "SkalaPanel";
+                        //     testInt = 0;
+                        // }
+                        // else
+                        //     testInt++;
                         break;
                     case "SkalaPanel":
-                        if (testInt > testLimit)
-                        {
-                            tutorialStage = "PlatsPanel";
-                            testInt = 0;
-                        }
-                        else
-                            testInt++;
+                        // if (testInt > testLimit)
+                        // {
+                        //     tutorialStage = "PlatsPanel";
+                        //     testInt = 0;
+                        // }
+                        // else
+                        //     testInt++;
                         break;
                     case "PlatsPanel":
-                        if (testInt > testLimit)
-                        {
-                            tutorialStage = "FargPanel";
-                            testInt = 0;
-                        }
-                        else
-                            testInt++;
+                        // if (testInt > testLimit)
+                        // {
+                        //     tutorialStage = "FargPanel";
+                        //     testInt = 0;
+                        // }
+                        // else
+                        //     testInt++;
                         break;
                     case "FargPanel":
-                        if (testInt > testLimit)
-                        {
-                            tutorialStage = "LastPanel";
-                            testInt = 0;
-                        }
-                        else
-                            testInt++;
+                        // if (testInt > testLimit)
+                        // {
+                        //     tutorialStage = "LastPanel";
+                        //     testInt = 0;
+                        // }
+                        // else
+                        //     testInt++;
                         break;
                     case "LastPanel":
-                        if (testInt > testLimit)
-                        {
-                            tutorialStage = "ReadyPanel";
-                            testInt = 0;
-                        }
-                        else
-                            testInt++;
+                        // if (testInt > testLimit)
+                        // {
+                        //     tutorialStage = "ReadyPanel";
+                        //     testInt = 0;
+                        // }
+                        // else
+                        //     testInt++;
                         break;
                     default:
                         Debug.Log("somethings wrong in the tutorial stage switch");
@@ -158,6 +159,7 @@ public class LevelManager : MonoBehaviour
         firstLevel.SetActive(false);
         level = "tutorial";
         tutorialStage = "ReadyPanel";
+        phoneTest.mode = "tutorial";
     }
 
     public void StartFirstLevel()
@@ -168,5 +170,30 @@ public class LevelManager : MonoBehaviour
         tutorialLevel.SetActive(false);
         firstLevel.SetActive(true);
         level = "first level";
+        phoneTest.mode = "main";
+        phoneTest.StartSpawn();
+    }
+
+    public void ReadyPlayer(SocketIOEvent e)
+    {
+        Debug.Log(e.data.GetField("name").str + " is ready");
+
+        string temp = null;
+        // if (players[e.data.GetField("player").f] == null)
+        if (players.TryGetValue(e.data.GetField("player").f, out temp))
+        {
+            // tutorialStage = "WelcomePanel";
+            players.Add(e.data.GetField("player").f, e.data.GetField("name").str);
+            tutorialPlayerName = e.data.GetField("name").str;
+        }
+        else
+        {
+            players[e.data.GetField("player").f] = e.data.GetField("name").str;
+            tutorialPlayerName = e.data.GetField("name").str;
+            tutorialStage = "SlappaPanel";
+            socket.Emit("slappaPanel");
+            phoneTest.StartSpawn();
+        }
+        //need to figure out what to do when more than one person in tutorial
     }
 }

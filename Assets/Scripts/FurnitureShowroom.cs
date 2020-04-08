@@ -5,6 +5,8 @@ using UnityEngine;
 public class FurnitureShowroom : MonoBehaviour
 {
     public GameObject[][] showroom = new GameObject[8][];
+    public GameObject[][] tutorialShowroom = new GameObject[3][];
+
 
     public GameObject[] baccaro;
     public GameObject[] brimnes;
@@ -35,6 +37,10 @@ public class FurnitureShowroom : MonoBehaviour
         showroom[5] = likseleLevos;
         showroom[6] = kautsbi;
         showroom[7] = odwar;
+
+        tutorialShowroom[0] = tullsta;
+        tutorialShowroom[1] = brimnes;
+        tutorialShowroom[2] = kautsbi;
         
     }
 

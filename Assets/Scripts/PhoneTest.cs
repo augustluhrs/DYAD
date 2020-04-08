@@ -8,6 +8,8 @@ public class PhoneTest : MonoBehaviour
 {
     private SocketIOComponent socket;
 
+    public string mode = "main";
+
     //furniture models
     public FurnitureShowroom furnitureShowroom;
     public GameObject[][] showroom;
@@ -16,6 +18,7 @@ public class PhoneTest : MonoBehaviour
     [SerializeField] GameObject[] flatpackArray = new GameObject[8];
     private int furniturePerPlayer = 4;
     private int flatpackIndex = 0;
+    public GameObject[][] tutorialShowroom;
 
     //new color stuff
     private int colorIndex = 0;
@@ -77,15 +80,20 @@ public class PhoneTest : MonoBehaviour
 
         furnitureShowroom = gameObject.GetComponent<FurnitureShowroom>();
         showroom = gameObject.GetComponent<FurnitureShowroom>().showroom;
+        tutorialShowroom = gameObject.GetComponent<FurnitureShowroom>().tutorialShowroom;
         //should I not start() until the socket is connected? might move later if so
         
+        //error not spawning at start
+        isFloating = true;
+
+
         //starting postions
         furniturePos = startPos; //deprecated?
         // furnitureTransform.position = startPos;
         // camPos = cam.transform.position;
 
-        //first spawn
-        SpawnNextFurniture(showroom[flatpackIndex][colorIndex], furniturePos, Quaternion.identity);
+        //first spawn -- now not until called
+        // SpawnNextFurniture(showroom[flatpackIndex][colorIndex], furniturePos, Quaternion.identity);
 
         // SpawnNextFurniture(flatpackArray[flatpackIndex]);
         // GameObject spawnedFurniture = Instantiate(flatpackArray[flatpackIndex], furniturePos, Quaternion.identity);
@@ -174,9 +182,6 @@ public class PhoneTest : MonoBehaviour
             // SpawnNextFurniture(flatpackArray[flatpackIndex]);
             // SpawnNextFurniture(showroom[flatpackIndex][colorIndex]);
             SpawnNextFurniture(lastFurniture, furnitureTransform.position, furnitureTransform.rotation);
-
-            
-
         }
     }
 
@@ -232,21 +237,40 @@ public class PhoneTest : MonoBehaviour
         colorIndex = 0;
 
         // SpawnNextFurniture(flatpackArray[flatpackIndex]); 
-        SpawnNextFurniture(showroom[flatpackIndex][colorIndex], furnitureTransform.position, furnitureTransform.rotation);        
+        // SpawnNextFurniture(showroom[flatpackIndex][colorIndex], furnitureTransform.position, furnitureTransform.rotation);        
+        if (mode == "tutorial")
+            SpawnNextFurniture(tutorialShowroom[flatpackIndex][colorIndex], furnitureTransform.position, furnitureTransform.rotation);
+        else
+            SpawnNextFurniture(showroom[flatpackIndex][colorIndex], furnitureTransform.position, furnitureTransform.rotation);
     }
 
     public void ChangeColor(SocketIOEvent e) //Farg
     {
-        if (colorIndex < showroom[flatpackIndex].Length - 1)
-            colorIndex++;
+        if (mode == "tutorial")
+        {
+            if (colorIndex < tutorialShowroom[flatpackIndex].Length - 1)
+                colorIndex++;
+            else
+                colorIndex = 0;
+        }
         else
-            colorIndex = 0;
+        {
+            if (colorIndex < showroom[flatpackIndex].Length - 1)
+                colorIndex++;
+            else
+                colorIndex = 0;
+        }
         GameObject destroyedFurniture = GameObject.Find("furn_" + furnitureCount);
         furnitureTransform = destroyedFurniture.transform;
         Destroy(destroyedFurniture);
 
         // SpawnNextFurniture(flatpackArray[flatpackIndex]); 
-        SpawnNextFurniture(showroom[flatpackIndex][colorIndex], furnitureTransform.position, furnitureTransform.rotation); 
+        // SpawnNextFurniture(showroom[flatpackIndex][colorIndex], furnitureTransform.position, furnitureTransform.rotation); 
+        if (mode == "tutorial")
+            SpawnNextFurniture(tutorialShowroom[flatpackIndex][colorIndex], furnitureTransform.position, furnitureTransform.rotation);
+        else
+            SpawnNextFurniture(showroom[flatpackIndex][colorIndex], furnitureTransform.position, furnitureTransform.rotation);
+    
     }
 
     public void ChangeRotation(SocketIOEvent e) //VINKEL
@@ -296,6 +320,14 @@ public class PhoneTest : MonoBehaviour
         // furnitureTransform.position = movedFurniture.transform.position;
         
         //to add later, should maybe keep it to one axis/one button, so to change direction you have to go to the bounds of either side?
+    }
+
+    public void StartSpawn()
+    {
+        if (mode == "tutorial")
+            SpawnNextFurniture(tutorialShowroom[flatpackIndex][colorIndex], furniturePos, Quaternion.identity);
+        else
+            SpawnNextFurniture(showroom[flatpackIndex][colorIndex], furniturePos, Quaternion.identity);
     }
 
     public void TestOpen(SocketIOEvent e)
