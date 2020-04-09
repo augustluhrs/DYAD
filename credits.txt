@@ -1,3 +1,24 @@
+DYAD [AR] v3
+by August Luhrs
+April 2020 (Quarantine)
+ITP NYU Thesis && 100 Days of Making
+
+Thanks to:
+
+Hayley Pasley for being my captive playtester and constant supporter.
+James Hosken for his Unity guru-ness and guidance throughout this process.
+@tevfikufuk and his Udemy Course, Building Multiplayer AR Games in Unity with Photon, which was the technical foundation of Dyad's Networking.
+Adrian Bautista for help with the Dyad logo,
+Lydia Jessup and Rashida Kamal for the laborious process they went through to let me see their NYT AR project code,
+Kathleen Wilson for Thesis cheerleading and wayfinding,
+Jane Friedhoff for the introduction to Unity and inspiring me to connect game design to radical efforts,
+Mimi Yin for providing a space to experiment using networked devices to explore group dynamics and community,
+Katherine Dillon for the 100 Days class and the fertile environment + practice within,
+
+
+
+
+
 DYAD v1
 by August Luhrs
 for Joy and Games Fall '19 @ ITP NYU
