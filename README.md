@@ -12,7 +12,7 @@
    - [X] New Unity Project
    - [X] Import Assets
    - [X] Photon Setup
-   - [ ] Main Experience Scaffold
+   - [X] Main Experience Scaffold
    - [X] Scene Manager Singleton
    - [ ] Build Settings
 2. Low Priority
@@ -37,8 +37,8 @@
 
 ### Lobby Scene
 1. High Priority
-   - [ ] Quick Match connect to servers
-   - [ ] Network Script
+   - [X] Quick Match connect to servers
+   - [X] Network Script
 2. Low Priority
    - [ ] Create Room
    - [ ] Join a Room
@@ -86,11 +86,15 @@
    2. Assets
       - [ ] New showroom
       - [ ] Rotate all assets / standardize
+      - [ ] Plane texture as IKEA map?
    3. Interface
       - [ ] Test with just single tap
       - [ ] Working scroll wheel
       - [ ] Scroll wheel local demo
       - [ ] Scroll wheel integrated into network sync
+   4. Game System
+      - [ ] Point tracking
+      - [ ] Round Timer
 2. Low Priority
    1. Evaluation
       1. In-game signaling
