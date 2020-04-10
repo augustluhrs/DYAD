@@ -15,6 +15,7 @@
    - [X] Main Experience Scaffold
    - [X] Scene Manager Singleton
    - [ ] Build Settings
+   - [ ] Game Design Document
 2. Low Priority
    - [ ] UI Scalable/Adjusts
    - [ ] Spectator Mode
