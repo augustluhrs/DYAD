@@ -1,10 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+// using UnityEngine.UI;
+using Photon.Pun;
+using UnityEngine.SceneManagement;
+
 
 public class MainMenuManager : MonoBehaviour
 {
+    // [Header("Button UI")]
     
+    [Header("Spinning Furniture Stuff")]
     [SerializeField] GameObject[] spinFurniture;
     [SerializeField] GameObject spawnPoint;
     private GameObject spinner;
@@ -69,5 +75,12 @@ public class MainMenuManager : MonoBehaviour
             //should I be lerping somehow?
 
         }
+    }
+
+    public void OnPlayGame()
+    {
+        // UnityEngine.SceneManagement.SceneLoader.Instance.LoadScene("Scene_PlayerProfile");
+        SceneLoader.Instance.LoadScene("Scene_PlayerProfile");
+        // SceneManager.LoadScene("Scene_PlayerProfile");
     }
 }
