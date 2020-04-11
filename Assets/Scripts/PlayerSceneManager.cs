@@ -31,14 +31,17 @@ public class PlayerSceneManager : MonoBehaviourPunCallbacks
 
     void Update()
     {
-        if (PhotonNetwork.IsConnectedAndReady) //this is fine, just wish there was more time spent on the text...
-        {
-            //connected, go to next scene
-            SceneLoader.Instance.LoadScene("Scene_Lobby");
-            // connectionText.GetComponent<TextMeshProUGUI>().text = "Connection Status: " + PhotonNetwork.NetworkClientState;
+        // if (PhotonNetwork.IsConnectedAndReady) //this is fine, just wish there was more time spent on the text...
+        // {
+        //     //connected, go to next scene
+            
+        //     SceneLoader.Instance.LoadScene("Scene_Lobby");
+        //     // connectionText.GetComponent<TextMeshProUGUI>().text = "Connection Status: " + PhotonNetwork.NetworkClientState;
 
-        }
-        else if (showConnectionStatus) // pressed button, connecting
+        // }
+        // else if (showConnectionStatus) // pressed button, connecting
+        
+        if (showConnectionStatus) // pressed button, connecting
         {
             connectionText.GetComponent<TextMeshProUGUI>().text = "Connection Status: " + PhotonNetwork.NetworkClientState;
             // text = "Connection Status: " + PhotonNetwork.NetworkClientState;
@@ -73,4 +76,12 @@ public class PlayerSceneManager : MonoBehaviourPunCallbacks
         else
             Debug.Log("Player name invalid or empty!");
     }
+
+    #region Photon Callbacks
+    public override void OnConnectedToMaster()
+    {
+        Debug.Log("joined lobby");
+        SceneLoader.Instance.LoadScene("Scene_Lobby");
+    }
+    #endregion
 }

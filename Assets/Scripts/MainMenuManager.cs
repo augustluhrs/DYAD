@@ -59,7 +59,7 @@ public class MainMenuManager : MonoBehaviour
         else
         { //if spinner hasn't spun out yet
             // if (isSpinningForward && spinSpeed <= 0 || !isSpinningForward && spinSpeed >= 0) 
-            Debug.Log(spinSpeed);
+            // Debug.Log(spinSpeed);
             if (spinSpeed < -1f) //0 leads to Zeno's Paradox...
             { //decrease speed
                 spinSpeed /= spinFactor;

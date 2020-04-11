@@ -20,6 +20,8 @@
    - [ ] UI Scalable/Adjusts
    - [ ] Spectator Mode
    - [ ] Party Mode (3-8)
+   - [ ] Flesh out README.md
+   - [ ] Code Comments
 3. Misc Ideas
 
 ### Main Menu Scene
@@ -93,6 +95,7 @@
       - [ ] Working scroll wheel
       - [ ] Scroll wheel local demo
       - [ ] Scroll wheel integrated into network sync
+      - [ ] Player spawn shadow (needed? could be option)
    4. Game System
       - [ ] Point tracking
       - [ ] Round Timer
@@ -128,6 +131,5 @@
    - [ ] Playtest promo/highlights vid
 2. Low Priority
    - [ ] Game trailer
-   - [ ] Fleshed out README.md
 3. Misc Ideas
 

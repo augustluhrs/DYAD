@@ -12,11 +12,19 @@ using TMPro;
 public class LobbyManager : MonoBehaviourPunCallbacks
 {
     
-    // [Header("Button UI")]
-    
+    [Header("Button UI")]
+    public GameObject roomNameInputField;
+    public GameObject buttonPanel;
+    public GameObject roomNamePanel;
+    public GameObject headlinePanel;
+    private string roomName;
+
     void Start()
     {
-        Debug.Log(PhotonNetwork.IsConnectedAndReady);
+        // Debug.Log(PhotonNetwork.IsConnectedAndReady);
+        roomNamePanel.SetActive(false);
+        buttonPanel.SetActive(true);
+
     }
 
     void Update()
@@ -26,17 +34,30 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     public void OnBlindDate()
     {
-
+        PhotonNetwork.JoinRandomRoom(); //built in callbacks OnJoined/Failed
     }
 
     public void OnCreateRoom()
     {
+        //photon.realtime
+        RoomOptions roomOptions = new RoomOptions();
+        roomOptions.MaxPlayers = 2;
+        roomOptions.IsOpen = true;
 
+        //Creating the room
+        PhotonNetwork.CreateRoom(PhotonNetwork.LocalPlayer.NickName,roomOptions);
     }
     
     public void OnJoinRoom()
     {
-        PhotonNetwork.JoinRandomRoom(); //built in callbacks OnJoin/Failed
+        buttonPanel.SetActive(false);
+        roomNamePanel.SetActive(true);
+    }
+
+    public void OnJoinRoomWithName()
+    {
+        roomName = roomNameInputField.GetComponent<TextMeshProUGUI>().text;
+        PhotonNetwork.JoinRoom(roomName);
     }
 
 
@@ -47,6 +68,13 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         Debug.Log(message);
         // uI_InformText.text = message;
         CreateAndJoinRoom();
+    }
+
+    public override void OnJoinRoomFailed(short returnCode, string message)
+    {
+        Debug.Log(message);
+
+        headlinePanel.GetComponentInChildren<TextMeshProUGUI>().text = "Error, invalid room name";
     }
 
 
@@ -67,7 +95,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         //     StartCoroutine(DeactivateAfterSeconds(uI_InformPanelGameobject, 2.0f));
         // }
 
-        Debug.Log( " joined to "+ PhotonNetwork.CurrentRoom.Name);
+        // Debug.Log( " joined to "+ PhotonNetwork.CurrentRoom.Name);
 
         SceneLoader.Instance.LoadScene("Scene_Gameplay");
     }
@@ -81,6 +109,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         //photon.realtime
         RoomOptions roomOptions = new RoomOptions();
         roomOptions.MaxPlayers = 2;
+        roomOptions.IsOpen = true;
 
         //Creating the room
         PhotonNetwork.CreateRoom(randomRoomName,roomOptions);
