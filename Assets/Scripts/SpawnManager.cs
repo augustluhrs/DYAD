@@ -19,6 +19,7 @@ public class SpawnManager : MonoBehaviourPunCallbacks
     void Start()
     {
         PhotonNetwork.NetworkingClient.EventReceived += OnEvent;
+        SpawnPlayer();
         // arCamera = GetComponent<
     }
 
@@ -45,19 +46,22 @@ public class SpawnManager : MonoBehaviourPunCallbacks
             // int receivedPlayerSelectionData = (int)data[3];
 
             GameObject player = Instantiate(playerPrefab, receivedPosition + floorPlan.transform.position, receivedRotation);
+            player.name = "OtherPlayerCube";
             PhotonView _photonView = player.GetComponent<PhotonView>();
             _photonView.ViewID = (int)data[2];
+            Debug.Log("spawned other player");
 
         }
     }
-
-    public override void OnJoinedRoom()
-    {
-        if (PhotonNetwork.IsConnectedAndReady)
-        {
-            SpawnPlayer();
-        }
-    }
+    //guess OnJoinedRoom() doesn't get called
+    // public override void OnJoinedRoom()
+    // {
+    //     if (PhotonNetwork.IsConnectedAndReady)
+    //     {
+    //         SpawnPlayer();
+    //         Debug.Log("joined room, spawn player");
+    //     }
+    // }
     #endregion
 
 
@@ -70,7 +74,7 @@ public class SpawnManager : MonoBehaviourPunCallbacks
             // Debug.Log("Player selection number is " + (int)playerSelectionNumber);
 
             // int randomSpawnPoint = Random.Range(0, spawnPositions.Length - 1);
-            Vector3 instantiatePosition = arCamera.transform.position;
+            Vector3 instantiatePosition = arCamera.transform.position + new Vector3(0f, 1f, 0f);
 
             GameObject playerGameobject = Instantiate(playerPrefab, instantiatePosition, Quaternion.identity);
 
@@ -100,7 +104,7 @@ public class SpawnManager : MonoBehaviourPunCallbacks
 
                 //Raise Events!
                 PhotonNetwork.RaiseEvent((byte)RaiseEventCodes.PlayerSpawnEventCode, data, raiseEventOptions, sendOptions);
-
+                Debug.Log("spawned player");
 
             }
             else

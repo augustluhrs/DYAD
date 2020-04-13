@@ -41,7 +41,7 @@ public class SceneLoader : Singleton<SceneLoader>
 
         while (!asyncSceneLoading.isDone)
         {
-            Debug.Log(asyncSceneLoading.progress);
+            // Debug.Log(asyncSceneLoading.progress);
 
             if (asyncSceneLoading.progress >= 0.9f )
             {

@@ -95,9 +95,10 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         //     StartCoroutine(DeactivateAfterSeconds(uI_InformPanelGameobject, 2.0f));
         // }
 
-        // Debug.Log( " joined to "+ PhotonNetwork.CurrentRoom.Name);
+        Debug.Log( " joined to "+ PhotonNetwork.CurrentRoom.Name);
 
         SceneLoader.Instance.LoadScene("Scene_Gameplay");
+        Debug.Log("after joined/scene");
     }
     #endregion
 

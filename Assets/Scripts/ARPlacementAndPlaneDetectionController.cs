@@ -6,13 +6,15 @@ using TMPro;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine.UI;
-using Photon.Chat;
+// using Photon.Chat;
 
 public class ARPlacementAndPlaneDetectionController : MonoBehaviourPunCallbacks
 {
+    //the preMatch Gameplay script
 
     ARPlaneManager m_ARPlaneManager;
     ARPlacementManager m_ARPlacementManager;
+    BasicClickDropTest m_basicClickDropTest;
 
     [Header("UI Elements")]
     public GameObject preMatchUI;
@@ -30,7 +32,7 @@ public class ARPlacementAndPlaneDetectionController : MonoBehaviourPunCallbacks
     private void Awake() {
         m_ARPlacementManager = GetComponent<ARPlacementManager>();
         m_ARPlaneManager = GetComponent<ARPlaneManager>();
-
+        m_basicClickDropTest = GetComponent<BasicClickDropTest>();
     }
     void Start()
     {
@@ -39,6 +41,9 @@ public class ARPlacementAndPlaneDetectionController : MonoBehaviourPunCallbacks
         adjustButton.SetActive(false);
         scaleSlider.SetActive(true);
         readyButton.SetActive(false);
+        m_basicClickDropTest.enabled = false;
+        // m_basicClickDropTest.enabled = true;
+
 
         roomText.text = "Room: " + PhotonNetwork.CurrentRoom.Name;
 
@@ -62,8 +67,8 @@ public class ARPlacementAndPlaneDetectionController : MonoBehaviourPunCallbacks
     // Update is called once per frame
     void Update()
     {
-        //hacky, should fix later [TODO]
-        if(!isAlone && PhotonNetwork.CurrentRoom.PlayerCount != 1)
+        //hacky, should fix later [TODO] -- use OnPlayerEnter()?
+        if(isAlone && PhotonNetwork.CurrentRoom.PlayerCount != 1)
         {
             instructionsText.text = "Move phone around to detect planes and choose where to place your floorplan. Try to match size/orientation with your partner.";
             isAlone = false;
@@ -78,10 +83,19 @@ public class ARPlacementAndPlaneDetectionController : MonoBehaviourPunCallbacks
         // adjustButton.SetActive(false);
         // readyButton.SetActive(false);
         preMatchUI.SetActive(false);
+        m_basicClickDropTest.enabled = true;
     }
 
     public void OnQuitMatch()
     {
+        // SceneLoader.Instance.LoadScene("Scene_Lobby");
+        PhotonNetwork.LeaveRoom();
+        Debug.Log("attempting to leave");
+    }
+
+    public override void OnLeftRoom()
+    {
+        Debug.Log("left room");
         SceneLoader.Instance.LoadScene("Scene_Lobby");
     }
 

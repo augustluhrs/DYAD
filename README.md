@@ -16,6 +16,8 @@
    - [X] Scene Manager Singleton
    - [X] Build Settings
    - [ ] Game Design Document
+   - [ ] Assets in Resources Folder
+   - [ ] Debug Console in Mobile Build
 2. Low Priority
    - [ ] UI Scalable/Adjusts
    - [ ] Spectator Mode
@@ -43,8 +45,9 @@
    - [X] Quick Match connect to servers
    - [X] Network Script
 2. Low Priority
-   - [ ] Create Room
-   - [ ] Join a Room
+   - [X] Create Room
+   - [X] Join a Room
+   - [ ] List of Open Rooms
 3. Misc Ideas
    - [ ] LAN
 
@@ -90,7 +93,14 @@
       - [ ] New showroom
       - [ ] Rotate all assets / standardize
       - [ ] Plane texture as IKEA map?
-   3. Interface
+   3. PreMatch Interface
+      - [X] Button Cycle as partner joins
+      - [X] Room number/partner name update
+      - [X] Instructions UI
+      - [X] Quit Match
+      - [X] Placement Plane Detection
+      - [ ] Placement Quaternion Rotation
+   4. Match Interface
       - [ ] Test with just single tap
       - [ ] Working scroll wheel
       - [ ] Scroll wheel local demo
@@ -99,6 +109,7 @@
    4. Game System
       - [ ] Point tracking
       - [ ] Round Timer
+      - [ ] Level management -- sync scene / master client
 2. Low Priority
    1. Evaluation
       1. In-game signaling
