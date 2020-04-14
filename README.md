@@ -92,7 +92,7 @@
    2. Assets
       - [ ] New showroom
       - [ ] Rotate all assets / standardize
-      - [ ] Plane texture as IKEA map?
+      - [X] Plane texture as IKEA map?
    3. PreMatch Interface
       - [X] Button Cycle as partner joins
       - [X] Room number/partner name update
@@ -126,8 +126,8 @@
 
 ### Playtesting
 1. High Priority
-   - [ ] Test apk download
-   - [ ] Download guide for Android
+   - [X] Test apk download
+   - [X] Download guide for Android
    - [ ] Download guide for iOS
    - [ ] Reach out to playtesters
    - [ ] Playtest Schedule

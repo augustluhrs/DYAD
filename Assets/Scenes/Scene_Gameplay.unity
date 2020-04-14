@@ -517,6 +517,7 @@ MonoBehaviour:
   ARCam: {fileID: 144520665}
   floorPlan: {fileID: 778683618}
   canSlappa: 0
+  wasFirst: 0
 --- !u!1 &175638676
 GameObject:
   m_ObjectHideFlags: 0
@@ -1560,7 +1561,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1760703bbd54c04488a8d10600262ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_PlanePrefab: {fileID: 108275320155550784, guid: a9b2f5ef787d99c418e283d8801ddc9a,
+  m_PlanePrefab: {fileID: 7164118470396100277, guid: 6604f24d3d514ca4ca135e050ec5bfdd,
     type: 3}
   m_DetectionMode: -1
 --- !u!114 &863477631
@@ -1649,6 +1650,7 @@ MonoBehaviour:
   ARCam: {fileID: 144520665}
   floorPlan: {fileID: 778683618}
   canSlappa: 0
+  wasFirst: 0
 --- !u!1 &1016862062
 GameObject:
   m_ObjectHideFlags: 0
