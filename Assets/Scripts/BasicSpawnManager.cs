@@ -36,12 +36,13 @@ public class BasicSpawnManager : MonoBehaviour
                         GameObject newSpawn;
                         if (wasFirst)
                         {
-                            newSpawn = PhotonNetwork.Instantiate("AR_Tullsta_white", ARCam.transform.position, ARCam.transform.rotation);
+                            newSpawn = PhotonNetwork.Instantiate("AR_Tullsta_white", ARCam.transform.position, Quaternion.identity);
                         }
                         else
                         {
-                            newSpawn = PhotonNetwork.Instantiate("AR_Odwar_brown", ARCam.transform.position, ARCam.transform.rotation);
+                            newSpawn = PhotonNetwork.Instantiate("AR_Odwar_brown", ARCam.transform.position, Quaternion.identity);
                         }
+                        newSpawn.transform.eulerAngles = new Vector3(newSpawn.transform.eulerAngles.x, ARCam.transform.eulerAngles.y, newSpawn.transform.eulerAngles.z);
                         newSpawn.transform.parent = floorPlan.transform;
                     }
                 }

@@ -105,7 +105,7 @@
       - [ ] Working scroll wheel
       - [ ] Scroll wheel local demo
       - [ ] Scroll wheel integrated into network sync
-      - [ ] Player spawn shadow (needed? could be option)
+      - [X] Spawn rotation on camera Y
    4. Game System
       - [ ] Point tracking
       - [ ] Round Timer
