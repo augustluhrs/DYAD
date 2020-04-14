@@ -18,7 +18,12 @@
       - Uncheck Multithreaded Rendering
       - Minimum API Level: Android 8.0 "Oreo"
       - Package Name: com.augustluhrs.DYAD_AR
-      - Default Orientation: Landscape Right (camera by right hand, opposite left scroll)
+      - Default Orientation: Landscape Right (camera by right hand, opposite left scroll
+   2. iOS
+      - Package Name: com.augustluhrs.DYAD_AR
+      - Camera Usage Description: "Camera is required for AR"
+      - target minimum iOS version: 11.0
+      - Architecture: ARM64
 
 ### Editor//UI
 1. Canvas

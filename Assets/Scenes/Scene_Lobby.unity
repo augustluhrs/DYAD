@@ -1024,7 +1024,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4ff042aaf8b931498f4e54b1cd4e7ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomNameInputField: {fileID: 1119943413}
+  roomNameInputField: {fileID: 1674416139}
   buttonPanel: {fileID: 1693055886}
   roomNamePanel: {fileID: 932510155}
   headlinePanel: {fileID: 628302847}
@@ -1507,7 +1507,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 783096851}
-        m_MethodName: OnJoinedRoom
+        m_MethodName: OnJoinRoomWithName
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2371,7 +2371,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 20.65
+  m_fontSize: 20.7
   m_fontSizeBase: 14
   m_fontWeight: 400
   m_enableAutoSizing: 1

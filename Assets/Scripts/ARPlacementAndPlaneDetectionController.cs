@@ -15,6 +15,7 @@ public class ARPlacementAndPlaneDetectionController : MonoBehaviourPunCallbacks
     ARPlaneManager m_ARPlaneManager;
     ARPlacementManager m_ARPlacementManager;
     BasicClickDropTest m_basicClickDropTest;
+    BasicSpawnManager m_basicSpawnManager;
 
     [Header("UI Elements")]
     public GameObject preMatchUI;
@@ -33,6 +34,7 @@ public class ARPlacementAndPlaneDetectionController : MonoBehaviourPunCallbacks
         m_ARPlacementManager = GetComponent<ARPlacementManager>();
         m_ARPlaneManager = GetComponent<ARPlaneManager>();
         m_basicClickDropTest = GetComponent<BasicClickDropTest>();
+        m_basicSpawnManager = GetComponent<BasicSpawnManager>();
     }
     void Start()
     {
@@ -83,7 +85,8 @@ public class ARPlacementAndPlaneDetectionController : MonoBehaviourPunCallbacks
         // adjustButton.SetActive(false);
         // readyButton.SetActive(false);
         preMatchUI.SetActive(false);
-        m_basicClickDropTest.enabled = true;
+        // m_basicClickDropTest.enabled = true;
+        m_basicSpawnManager.canSlappa = true;
     }
 
     public void OnQuitMatch()

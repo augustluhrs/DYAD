@@ -46,7 +46,7 @@
    - [X] Network Script
 2. Low Priority
    - [X] Create Room
-   - [X] Join a Room
+   - [X] Join a Room 
    - [ ] List of Open Rooms
 3. Misc Ideas
    - [ ] LAN
@@ -83,11 +83,11 @@
 ### Gameplay Scene
 1. High Priority
    1. Networking
-      - [ ] Basic demo working on Photon
+      - [X] Basic demo working on Photon
       - [ ] Synchronization Script
             - [ ] player/camera
-            - [ ] furniture spawns
-            - [ ] player names
+            - [X] furniture spawns
+            - [X] player names
             - [ ] adv. interface info (type/color/size/etc)
    2. Assets
       - [ ] New showroom
@@ -101,7 +101,7 @@
       - [X] Placement Plane Detection
       - [ ] Placement Quaternion Rotation
    4. Match Interface
-      - [ ] Test with just single tap
+      - [X] Test with just single tap
       - [ ] Working scroll wheel
       - [ ] Scroll wheel local demo
       - [ ] Scroll wheel integrated into network sync
