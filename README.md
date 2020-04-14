@@ -90,7 +90,8 @@
             - [X] player names
             - [ ] adv. interface info (type/color/size/etc)
    2. Assets
-      - [ ] New showroom
+      - [ ] New showroom (resources)
+      - [ ] Scale assets?
       - [ ] Rotate all assets / standardize
       - [X] Plane texture as IKEA map?
    3. PreMatch Interface

@@ -41,7 +41,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     {
         //photon.realtime
         RoomOptions roomOptions = new RoomOptions();
-        roomOptions.MaxPlayers = 2;
+        // roomOptions.MaxPlayers = 2; //for spectating, disabled
         roomOptions.IsOpen = true;
 
         //Creating the room
@@ -109,7 +109,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
         //photon.realtime
         RoomOptions roomOptions = new RoomOptions();
-        roomOptions.MaxPlayers = 2;
+        // roomOptions.MaxPlayers = 2;
         roomOptions.IsOpen = true;
 
         //Creating the room

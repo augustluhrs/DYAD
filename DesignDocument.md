@@ -24,6 +24,7 @@
       - Camera Usage Description: "Camera is required for AR"
       - target minimum iOS version: 11.0
       - Architecture: ARM64
+      - Default Orientation: Landscape Right (camera by right hand, opposite left scroll
 
 ### Editor//UI
 1. Canvas
