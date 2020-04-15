@@ -107,6 +107,7 @@
       - [ ] Scroll wheel local demo
       - [ ] Scroll wheel integrated into network sync
       - [X] Spawn rotation on camera Y
+      - [ ] Quit match button
    4. Game System
       - [ ] Point tracking
       - [ ] Round Timer
@@ -132,8 +133,9 @@
    - [ ] Download guide for iOS
    - [ ] Reach out to playtesters
    - [ ] Playtest Schedule
-   - [ ] Feedback form
-   - [ ] Re-read playtesting guidelines
+   - [X] Feedback form
+   - [X] Re-read playtesting guidelines
+   - [X] Playtest Data Doc
 2. Low Priority
 3. Misc Ideas
 
