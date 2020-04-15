@@ -34,7 +34,9 @@
 2. Low Priority
    - [ ] Better-looking Buttons
    - [ ] Adjust the furniture spawnpoint to scale along with canvas (canvas -- camera?)
-   - [ ] Name/Credits/Socials?
+   - [ ] Name/Credits/Social
+   - [ ] Options (flip landscape? mirror control for left?)
+   - [ ] Version in bottom right
    - [ ] Blind Date -- jump in to a match blind
 3. Misc Ideas
    - [ ] Exit Button?
