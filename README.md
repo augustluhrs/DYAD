@@ -1,6 +1,6 @@
 # DYAD
 
-![DYAD Logo](https://github.com/augustluhrs/DYAD/blob/master/logo_test1.png)
+![DYAD Logo](https://github.com/augustluhrs/DYAD/blob/jackbox-sockets/logo_test1.png)
 
 ---
 
