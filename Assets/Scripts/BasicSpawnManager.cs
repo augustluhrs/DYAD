@@ -10,6 +10,7 @@ public class BasicSpawnManager : MonoBehaviour
     public GameObject floorPlan;
     public bool canSlappa = false;
     public bool wasFirst = false;
+    public string selectedFurniture;
 
     void Start()
     {
@@ -20,6 +21,7 @@ public class BasicSpawnManager : MonoBehaviour
             wasFirst = true;
         else
             Debug.Log(PhotonNetwork.CurrentRoom.PlayerCount);
+        // Debug.Log(selectedFurniture);
     }
 
     // Update is called once per frame
@@ -27,23 +29,28 @@ public class BasicSpawnManager : MonoBehaviour
     {
         if(canSlappa)
         {
+            // Debug.Log(selectedFurniture);
+
             foreach (Touch touch in Input.touches)
             {
                 if (touch.fingerId == 0) //first press
                 {
                     if (Input.GetTouch(0).phase == TouchPhase.Ended)
                     {
-                        GameObject newSpawn;
-                        if (wasFirst)
-                        {
-                            newSpawn = PhotonNetwork.Instantiate("AR_Tullsta_white", ARCam.transform.position, Quaternion.identity);
-                        }
-                        else
-                        {
-                            newSpawn = PhotonNetwork.Instantiate("AR_Odwar_brown", ARCam.transform.position, Quaternion.identity);
-                        }
+                        // GameObject otherSpawn;
+                        // if (wasFirst)
+                        // {
+                        //     otherSpawn = PhotonNetwork.Instantiate("AR_Tullsta_white", ARCam.transform.position + (Vector3.one * 2), Quaternion.identity);
+                        // }
+                        // else
+                        // {
+                        //     otherSpawn = PhotonNetwork.Instantiate("AR_Odwar_brown", ARCam.transform.position + (Vector3.one * 2), Quaternion.identity);
+                        // }
+                        GameObject newSpawn = PhotonNetwork.Instantiate(selectedFurniture, ARCam.transform.position, Quaternion.identity);
                         newSpawn.transform.eulerAngles = new Vector3(newSpawn.transform.eulerAngles.x, ARCam.transform.eulerAngles.y, newSpawn.transform.eulerAngles.z);
                         newSpawn.transform.parent = floorPlan.transform;
+                        // otherSpawn.transform.parent = floorPlan.transform;
+
                     }
                 }
             }

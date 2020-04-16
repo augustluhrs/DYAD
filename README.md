@@ -17,6 +17,7 @@
    - [X] Build Settings
    - [ ] Game Design Document
    - [ ] Assets in Resources Folder
+   - [ ] Asset Sprite Atlas?
    - [ ] Debug Console in Mobile Build
 2. Low Priority
    - [ ] UI Scalable/Adjusts
@@ -24,6 +25,8 @@
    - [ ] Party Mode (3-8)
    - [ ] Flesh out README.md
    - [ ] Code Comments
+   - [ ] Music?
+   - [ ] Funny Text Commentary?
 3. Misc Ideas
 
 ### Main Menu Scene
@@ -124,6 +127,8 @@
    2. Levels
       - [ ] Level Manager
       - [ ] Persistent Score / Relationship Memory
+   3. Interface Upgrades
+      - [ ] scroll wheel retracts when not in use
 3. Misc Ideas
    - [ ] Occlusion
 

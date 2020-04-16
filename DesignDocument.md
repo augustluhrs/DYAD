@@ -26,6 +26,12 @@
       - Architecture: ARM64
       - Default Orientation: Landscape Right (camera by right hand, opposite left scroll
 
+### Assets/Resources
+1. Prefab Settings
+   - All prefabs scaled to .8 for now 
+   - Name standard = "AR_FurnitureName_color" (note capitalization)
+   - Have to attach PhotonView and MySynchronizationScript
+
 ### Editor//UI
 1. Canvas
    - Canvas Scaler: Scale to Screen Size && Expand

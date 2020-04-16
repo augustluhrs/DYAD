@@ -19,6 +19,7 @@ public class ARPlacementAndPlaneDetectionController : MonoBehaviourPunCallbacks
 
     [Header("UI Elements")]
     public GameObject preMatchUI;
+    public GameObject matchUI;
     public GameObject placeButton;
     public GameObject adjustButton;
     public GameObject readyButton;
@@ -39,13 +40,13 @@ public class ARPlacementAndPlaneDetectionController : MonoBehaviourPunCallbacks
     void Start()
     {
         preMatchUI.SetActive(true);
+        matchUI.SetActive(false);
         placeButton.SetActive(false);
         adjustButton.SetActive(false);
         scaleSlider.SetActive(true);
         readyButton.SetActive(false);
         m_basicClickDropTest.enabled = false;
         // m_basicClickDropTest.enabled = true;
-
 
         roomText.text = "Room: " + PhotonNetwork.CurrentRoom.Name;
 
@@ -85,6 +86,7 @@ public class ARPlacementAndPlaneDetectionController : MonoBehaviourPunCallbacks
         // adjustButton.SetActive(false);
         // readyButton.SetActive(false);
         preMatchUI.SetActive(false);
+        matchUI.SetActive(true);
         // m_basicClickDropTest.enabled = true;
         m_basicSpawnManager.canSlappa = true;
     }
