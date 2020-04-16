@@ -36,3 +36,6 @@
 1. Canvas
    - Canvas Scaler: Scale to Screen Size && Expand
      - Nope that doesn't work either...
+
+### Github Practices
+- went ahead and made AR the master, will probably push to master every major feature/version? (current version... 0.3.3?)
