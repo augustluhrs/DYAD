@@ -24,7 +24,6 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         // Debug.Log(PhotonNetwork.IsConnectedAndReady);
         roomNamePanel.SetActive(false);
         buttonPanel.SetActive(true);
-
     }
 
     void Update()
@@ -58,6 +57,18 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     {
         roomName = roomNameInputField.GetComponent<TextMeshProUGUI>().text;
         PhotonNetwork.JoinRoom(roomName);
+    }
+
+    public void OnBackToMainMenu() //exit
+    {
+        PhotonNetwork.Disconnect();
+        SceneLoader.Instance.LoadScene("Scene_MainMenu");
+    }
+
+    public void OnBacktoPrevMenu() //back from join room
+    {
+        roomNamePanel.SetActive(false);
+        buttonPanel.SetActive(true);
     }
 
 

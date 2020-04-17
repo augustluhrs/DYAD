@@ -21,6 +21,7 @@
    - [ ] Debug Console in Mobile Build
 2. Low Priority
    - [ ] UI Scalable/Adjusts
+   - [ ] Figure out stretch or fixed anchor?
    - [ ] Spectator Mode
    - [ ] Party Mode (3-8)
    - [ ] Flesh out README.md
@@ -83,6 +84,7 @@
    - [ ] Game overview/guide
 2. Low Priority
    1. Tied in to specific player profile
+   2. Responsive Guide (shows text based on errors/input)
 3. Misc Ideas
 
 ### Gameplay Scene

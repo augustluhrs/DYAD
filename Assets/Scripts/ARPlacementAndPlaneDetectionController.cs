@@ -9,7 +9,7 @@ using UnityEngine.UI;
 // using Photon.Chat;
 
 public class ARPlacementAndPlaneDetectionController : MonoBehaviourPunCallbacks
-{
+{ //TODO rename this to some sort of manager
     //the preMatch Gameplay script
 
     ARPlaneManager m_ARPlaneManager;
@@ -20,6 +20,7 @@ public class ARPlacementAndPlaneDetectionController : MonoBehaviourPunCallbacks
     [Header("UI Elements")]
     public GameObject preMatchUI;
     public GameObject matchUI;
+    public GameObject quitCheckUI;
     public GameObject placeButton;
     public GameObject adjustButton;
     public GameObject readyButton;
@@ -41,6 +42,7 @@ public class ARPlacementAndPlaneDetectionController : MonoBehaviourPunCallbacks
     {
         preMatchUI.SetActive(true);
         matchUI.SetActive(false);
+        quitCheckUI.SetActive(false);
         placeButton.SetActive(false);
         adjustButton.SetActive(false);
         scaleSlider.SetActive(true);
@@ -90,12 +92,27 @@ public class ARPlacementAndPlaneDetectionController : MonoBehaviourPunCallbacks
         // m_basicClickDropTest.enabled = true;
         m_basicSpawnManager.canSlappa = true;
     }
+    
+    public void OnQuitCheck()
+    {
+        quitCheckUI.SetActive(true);
+    }
 
+    public void OnBackToGame() //after back in quit check menu
+    {
+        quitCheckUI.SetActive(false);
+    }
     public void OnQuitMatch()
     {
         // SceneLoader.Instance.LoadScene("Scene_Lobby");
         PhotonNetwork.LeaveRoom();
         Debug.Log("attempting to leave");
+    }
+
+    public void OnBackToMenu() //only in tutorial
+    {
+        //TODO
+        SceneLoader.Instance.LoadScene("Scene_PlayerProfile");
     }
 
     public override void OnLeftRoom()

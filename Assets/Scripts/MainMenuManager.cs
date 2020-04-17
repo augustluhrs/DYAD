@@ -8,8 +8,12 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuManager : MonoBehaviour
 {
-    // [Header("Button UI")]
-    
+    [Header("Button UI")]
+    public GameObject mainMenuUI;
+    public GameObject optionsUI;
+    public GameObject exitUI;
+    // public GameObject creditsUI;
+
     [Header("Spinning Furniture Stuff")]
     [SerializeField] GameObject[] spinFurniture;
     [SerializeField] GameObject spawnPoint;
@@ -27,6 +31,10 @@ public class MainMenuManager : MonoBehaviour
         spinner  = Instantiate(spinFurniture[furnIndex], spawnPoint.transform.position, Quaternion.identity);
         spinner.transform.parent = spawnPoint.transform;
         spinner.GetComponent<Rigidbody>().useGravity = false;
+        
+        mainMenuUI.SetActive(true);
+        optionsUI.SetActive(false);
+        exitUI.SetActive(false);
     }
 
     // Update is called once per frame
@@ -76,11 +84,40 @@ public class MainMenuManager : MonoBehaviour
 
         }
     }
+ 
+    public void OnExitCheck()
+    {
+        mainMenuUI.SetActive(false);
+        exitUI.SetActive(true);
+    }
+
+    public void OnExit()
+    {
+        Application.Quit();
+    }
+
+    public void OnBackToMainMenu()
+    {
+        exitUI.SetActive(false);
+        optionsUI.SetActive(false);
+        mainMenuUI.SetActive(true);
+    }
 
     public void OnPlayGame()
     {
         // UnityEngine.SceneManagement.SceneLoader.Instance.LoadScene("Scene_PlayerProfile");
         SceneLoader.Instance.LoadScene("Scene_PlayerProfile");
         // SceneManager.LoadScene("Scene_PlayerProfile");
+    }
+
+    public void OnOptions()
+    {
+        optionsUI.SetActive(true);
+        mainMenuUI.SetActive(false);
+    }
+
+    public void OnCredits()
+    {
+        Application.OpenURL("https://github.com/augustluhrs/dyad/blob/master/credits.txt");
     }
 }
