@@ -12,6 +12,7 @@ public class PlayerSceneManager : MonoBehaviourPunCallbacks
     [Header("Player Panel UI")]
     [SerializeField] GameObject playerPanel;
     [SerializeField] public GameObject playerNameInputField;
+    private string playerName;
     // public TextMeshPro playerNameTMP;
     //still don't really get the diff between SerializeField and public
 
@@ -20,11 +21,32 @@ public class PlayerSceneManager : MonoBehaviourPunCallbacks
     [SerializeField] GameObject connectionText;
     public bool showConnectionStatus = false; 
 
+    [Header("GameMode UI")]
+    [SerializeField] GameObject gameModeUI;
+
     void Start()
     {
-        //need to do this? just to be safe?
-        playerPanel.SetActive(true);
-        connectionPanel.SetActive(false);
+        // Debug.Log("player name:" + playerName);
+        // Debug.Log("bool: " + string.IsNullOrEmpty(playerName));
+
+        //if coming back from sandbox, don't redo name
+        if(!string.IsNullOrEmpty(playerName)) //already has a name
+        {
+            Debug.Log("returning player");
+            playerPanel.SetActive(false);
+            connectionPanel.SetActive(false);
+            gameModeUI.SetActive(true);
+        }
+        else //first time here
+        {
+            Debug.Log("new player");
+            playerPanel.SetActive(true); //TODO change this to the UI convention
+            connectionPanel.SetActive(false);
+            gameModeUI.SetActive(false);
+        }
+        // playerPanel.SetActive(true); //TODO change this to the UI convention
+        // connectionPanel.SetActive(false);
+        // gameModeUI.SetActive(false);
         // playerNameTMP = playerNameInputField.GetComponent<TextMeshPro>();
         // playerNameInputField
     }
@@ -52,29 +74,51 @@ public class PlayerSceneManager : MonoBehaviourPunCallbacks
         // }
     }
 
-    public void OnFindRoom()
+    public void OnNameInput()
     {
         // string playerName = playerNameText.text;
         // Debug.Log(playerNameTMP.text);
         // Debug.Log(playerNameInputField.TryGetComponent<TextMeshPro>(out TextMeshPro tmp));
-        string playerName = playerNameInputField.GetComponent<TextMeshProUGUI>().text;
+        playerName = playerNameInputField.GetComponent<TextMeshProUGUI>().text;
 
         if (!string.IsNullOrEmpty(playerName))
         {
             playerPanel.SetActive(false);
-            connectionPanel.SetActive(true);
-            showConnectionStatus = true;
+            PhotonNetwork.LocalPlayer.NickName = playerName;
+            gameModeUI.SetActive(true);
+            // connectionPanel.SetActive(true);
+            // showConnectionStatus = true;
 
-            if (!PhotonNetwork.IsConnected)
-            {
-                PhotonNetwork.LocalPlayer.NickName = playerName;
+            // if (!PhotonNetwork.IsConnected)
+            // {
+            //     PhotonNetwork.LocalPlayer.NickName = playerName;
 
-                PhotonNetwork.ConnectUsingSettings();
-                // PhotonNetwork.ConnectToMaster();
-            }
+            //     PhotonNetwork.ConnectUsingSettings();
+            //     // PhotonNetwork.ConnectToMaster();
+            // }
         }
         else
             Debug.Log("Player name invalid or empty!");
+    }
+
+    public void OnFindRoom()
+    {
+        gameModeUI.SetActive(false);
+        connectionPanel.SetActive(true);
+        showConnectionStatus = true;
+
+        if (!PhotonNetwork.IsConnected)
+        {
+            // PhotonNetwork.LocalPlayer.NickName = playerName;
+
+            PhotonNetwork.ConnectUsingSettings();
+            // PhotonNetwork.ConnectToMaster();
+        }
+    }
+
+    public void OnTutorialSandbox()
+    {
+        SceneLoader.Instance.LoadScene("Scene_TutorialSandbox");
     }
 
     #region Photon Callbacks
