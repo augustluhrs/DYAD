@@ -38,9 +38,9 @@
 2. Low Priority
    - [ ] Better-looking Buttons
    - [ ] Adjust the furniture spawnpoint to scale along with canvas (canvas -- camera?)
-   - [ ] Name/Credits/Social
+   - [X] Name/Credits/Social
    - [ ] Options (flip landscape? mirror control for left?)
-   - [ ] Version in bottom right
+   - [X] Version in bottom right (moved to top)
    - [ ] Blind Date -- jump in to a match blind
 3. Misc Ideas
    - [ ] Exit Button?
@@ -108,13 +108,14 @@
       - [X] Quit Match
       - [X] Placement Plane Detection
       - [ ] Placement Quaternion Rotation
+      - [ ] Valid Placement below ARCam Y?
    4. Match Interface
       - [X] Test with just single tap
-      - [ ] Working scroll wheel
-      - [ ] Scroll wheel local demo
-      - [ ] Scroll wheel integrated into network sync
+      - [X] Working scroll wheel
+      - [X] Scroll wheel local demo
+      - [X] Scroll wheel integrated into network sync
       - [X] Spawn rotation on camera Y
-      - [ ] Quit match button
+      - [X] Quit match button
    4. Game System
       - [ ] Point tracking
       - [ ] Round Timer

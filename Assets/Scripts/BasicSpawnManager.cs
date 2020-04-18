@@ -14,8 +14,8 @@ public class BasicSpawnManager : MonoBehaviour
 
     void Start()
     {
-        GameObject avatar = PhotonNetwork.Instantiate("AR_Avatar_BasicCube", ARCam.transform.position + new Vector3(0f, 1f, 0f), Quaternion.identity);
-        avatar.transform.parent = ARCam.transform.parent;
+        // GameObject avatar = PhotonNetwork.Instantiate("AR_Avatar_BasicCube", ARCam.transform.position + new Vector3(0f, 1f, 0f), Quaternion.identity);
+        // avatar.transform.parent = ARCam.transform.parent;
         //not getting the floor plan offset...
         if (PhotonNetwork.CurrentRoom.PlayerCount == 1)
             wasFirst = true;

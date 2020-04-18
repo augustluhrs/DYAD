@@ -37,5 +37,20 @@
    - Canvas Scaler: Scale to Screen Size && Expand
      - Nope that doesn't work either...
 
+### Level Prefabs
+1. Model
+   - Going pretty freeform right now with walls and colliders other than using the average sqft as a guide.
+   - Should redo these, maybe in blender
+2. Colliders
+   - Arbitrary height -- 15?
+3. Text
+   - Character size .01
+   - Font Size 100
+   - Scale all 1
+   - Center everything
+4. Colors
+   - Material a pale yellow
+   - Text a pale blue
+
 ### Github Practices
 - went ahead and made AR the master, will probably push to master every major feature/version? (current version... 0.3.3?)
