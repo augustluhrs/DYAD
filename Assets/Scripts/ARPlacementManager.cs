@@ -36,8 +36,13 @@ public class ARPlacementManager : MonoBehaviour
 
             floorPlan.transform.position = positionToBePlaced;
             //keep position and rotate on y along with player:
+            // floorPlan.transform.eulerAngles = new Vector3(floorPlan.transform.eulerAngles.x, arCamera.transform.eulerAngles.y, floorPlan.transform.eulerAngles.z);
             //TODO: Quaternion rotation
-            floorPlan.transform.eulerAngles = new Vector3(floorPlan.transform.eulerAngles.x, arCamera.transform.eulerAngles.y, floorPlan.transform.eulerAngles.z);
+            // floorPlan.transform.rotation = new Quaternion(floorPlan.transform.rotation.x, arCamera.transform.rotation.y, floorPlan.transform.rotation.z, floorPlan.transform.rotation.w);
+            //trying random b/c didn't work
+            floorPlan.transform.rotation = new Quaternion(floorPlan.transform.rotation.x, arCamera.transform.rotation.y, floorPlan.transform.rotation.z, 1);
+
+        
         }
     
     }

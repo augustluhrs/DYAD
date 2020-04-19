@@ -59,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fd46e75159704534498136f0db996981, type: 2}
+  - {fileID: 2100000, guid: 5c1f7ada42ed4324baf93301a81b7ffd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -152,7 +152,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fd46e75159704534498136f0db996981, type: 2}
+  - {fileID: 2100000, guid: 5c1f7ada42ed4324baf93301a81b7ffd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -312,7 +312,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fd46e75159704534498136f0db996981, type: 2}
+  - {fileID: 2100000, guid: 5c1f7ada42ed4324baf93301a81b7ffd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -438,7 +438,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
-  isBathroom: 0
+  isBathroom: 1
   isMainRoom: 0
 --- !u!1 &4108427716185659183
 GameObject:
@@ -499,7 +499,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fd46e75159704534498136f0db996981, type: 2}
+  - {fileID: 2100000, guid: 5c1f7ada42ed4324baf93301a81b7ffd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -592,7 +592,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fd46e75159704534498136f0db996981, type: 2}
+  - {fileID: 2100000, guid: 5c1f7ada42ed4324baf93301a81b7ffd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -652,7 +652,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4679889611136380934}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 2, y: 0.125, z: 1.75}
+  m_LocalPosition: {x: 2, y: 0.6, z: 1.75}
   m_LocalScale: {x: 8, y: 5.4999995, z: 0.25}
   m_Children: []
   m_Father: {fileID: 8742910251761374287}
@@ -676,7 +676,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5297328dff858be4d84200db20c925ae, type: 3}
+  - {fileID: 2100000, guid: 3d90c626a0208964590fa9a443563b4d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -718,7 +718,7 @@ TextMesh:
   m_Font: {fileID: 12800000, guid: 5297328dff858be4d84200db20c925ae, type: 3}
   m_Color:
     serializedVersion: 2
-    rgba: 4291332955
+    rgba: 3787084032
 --- !u!1 &5347782031396663511
 GameObject:
   m_ObjectHideFlags: 0
@@ -778,7 +778,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fd46e75159704534498136f0db996981, type: 2}
+  - {fileID: 2100000, guid: 5c1f7ada42ed4324baf93301a81b7ffd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -838,7 +838,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6067433396104495852}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.1, y: 0, z: -0.1}
+  m_LocalPosition: {x: -0.1, y: 0.6, z: -0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5394299655689781978}
@@ -862,7 +862,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5297328dff858be4d84200db20c925ae, type: 3}
+  - {fileID: 2100000, guid: 3d90c626a0208964590fa9a443563b4d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -964,7 +964,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fd46e75159704534498136f0db996981, type: 2}
+  - {fileID: 2100000, guid: 5c1f7ada42ed4324baf93301a81b7ffd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1057,7 +1057,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
   isBathroom: 0
-  isMainRoom: 0
+  isMainRoom: 1
 --- !u!1 &8180202492363302336
 GameObject:
   m_ObjectHideFlags: 0

@@ -2306,21 +2306,11 @@ PrefabInstance:
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 1777033114}
-    - target: {fileID: 5279617302607963161, guid: b6f60e8608508a145a2b9cb8c07608e3,
-        type: 3}
-      propertyPath: isBathroom
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5697338744400579952, guid: b6f60e8608508a145a2b9cb8c07608e3,
         type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 1777033114}
-    - target: {fileID: 5697338744400579952, guid: b6f60e8608508a145a2b9cb8c07608e3,
-        type: 3}
-      propertyPath: isMainRoom
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7930874380923179143, guid: b6f60e8608508a145a2b9cb8c07608e3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2375,21 +2365,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7930874380923179143, guid: b6f60e8608508a145a2b9cb8c07608e3,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7930874380923179143, guid: b6f60e8608508a145a2b9cb8c07608e3,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7930874380923179143, guid: b6f60e8608508a145a2b9cb8c07608e3,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b6f60e8608508a145a2b9cb8c07608e3, type: 3}
@@ -2841,7 +2816,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Color: {r: 1, g: 0.97342384, b: 0.9009434, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -2899,7 +2874,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1539222904}
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: 0, y: 8.63, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -4074,7 +4049,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 112.32001, y: 229.75499}
+  m_AnchoredPosition: {x: 112.25, y: 229.75}
   m_SizeDelta: {x: -439.98, y: -499.15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2072606153
