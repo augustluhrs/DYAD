@@ -12,6 +12,8 @@ public class ColliderTest : MonoBehaviour
     public float mainRoomCount = 0;
     public float bathroomCount = 0;
 
+    // public GameObject[] floorPlanPile; //total heap of furn
+
 
     void Start()
     {

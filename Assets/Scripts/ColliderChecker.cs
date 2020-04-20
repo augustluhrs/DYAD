@@ -9,36 +9,51 @@ public class ColliderChecker : MonoBehaviour
     // [SerializeField] TextMeshProUGUI colliderText;
     [SerializeField] GameObject gameManager; //AR session Origin
     ColliderTest m_ColliderTest;
+    ColliderManager m_ColliderManager;
     [SerializeField] bool isBathroom;
     [SerializeField] bool isMainRoom;
-    private float colliderCount = 0;
+    // private float colliderCount = 0;
     // public float mainRoomCount = 0;
     // public float bathroomCount = 0;
 
     void Start()
     {
-        m_ColliderTest = gameManager.GetComponent<ColliderTest>();
+        // m_ColliderTest = gameManager.GetComponent<ColliderTest>();
+        m_ColliderManager = gameManager.GetComponent<ColliderManager>();
     }
 
     private void OnTriggerEnter(Collider other) //need to see if is too expensive...
     {
-        colliderCount++;
+        m_ColliderManager.floorPlanPile.Add(other.gameObject);
         if (isBathroom)
-            m_ColliderTest.bathroomCount = colliderCount;
+            m_ColliderManager.bathroomPile.Add(other.gameObject);
+        // can't do this because not a discrete collider...
         if (isMainRoom)
-            m_ColliderTest.mainRoomCount = colliderCount;
+            m_ColliderManager.mainRoomPile.Add(other.gameObject);
+        
+        
+        // colliderCount++;
+        // if (isBathroom)
+        //     m_ColliderTest.bathroomCount = colliderCount;
+        // if (isMainRoom)
+        //     m_ColliderTest.mainRoomCount = colliderCount;
     }
 
     private void OnTriggerExit(Collider other) 
     {
-        colliderCount--;
+        m_ColliderManager.floorPlanPile.Remove(other.gameObject);
         if (isBathroom)
-            m_ColliderTest.bathroomCount = colliderCount;
+            m_ColliderManager.bathroomPile.Remove(other.gameObject);
         if (isMainRoom)
-            m_ColliderTest.mainRoomCount = colliderCount;
+            m_ColliderManager.mainRoomPile.Remove(other.gameObject);
+        
+        
+        // colliderCount--;
+        // if (isBathroom)
+        //     m_ColliderTest.bathroomCount = colliderCount;
+        // if (isMainRoom)
+        //     m_ColliderTest.mainRoomCount = colliderCount;
     }
-
-    
 
     void Update()
     {

@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 5944921142387738795}
   m_Layer: 0
   m_Name: AR_Tullsta_white
-  m_TagString: Untagged
+  m_TagString: tullsta
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295

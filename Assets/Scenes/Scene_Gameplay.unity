@@ -775,6 +775,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76597f44daf8dee4bbbcc41db238571f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wheelSelector: {fileID: 0}
   ARCam: {fileID: 144520665}
   floorPlan: {fileID: 778683618}
   canSlappa: 0
@@ -1157,7 +1158,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 41.25
+  m_fontSize: 41.4
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1801,6 +1802,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: level_1_studio
       objectReference: {fileID: 0}
+    - target: {fileID: 5279617302607963161, guid: b6f60e8608508a145a2b9cb8c07608e3,
+        type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 863477627}
+    - target: {fileID: 5697338744400579952, guid: b6f60e8608508a145a2b9cb8c07608e3,
+        type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 863477627}
     - target: {fileID: 7930874380923179143, guid: b6f60e8608508a145a2b9cb8c07608e3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2909,6 +2920,8 @@ GameObject:
   - component: {fileID: 863477631}
   - component: {fileID: 863477635}
   - component: {fileID: 863477636}
+  - component: {fileID: 863477637}
+  - component: {fileID: 863477638}
   m_Layer: 0
   m_Name: AR Session Origin
   m_TagString: Untagged
@@ -2958,7 +2971,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PlanePrefab: {fileID: 7164118470396100277, guid: 6604f24d3d514ca4ca135e050ec5bfdd,
     type: 3}
-  m_DetectionMode: -1
+  m_DetectionMode: 1
 --- !u!114 &863477631
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2997,6 +3010,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb7b3e3697f42334c908747007f72c45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  floorPlan: {fileID: 778683618}
+  ARCam: {fileID: 144520665}
   preMatchUI: {fileID: 1016862062}
   matchUI: {fileID: 1332396704}
   quitCheckUI: {fileID: 2016255730}
@@ -3044,11 +3059,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76597f44daf8dee4bbbcc41db238571f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wheelSelector: {fileID: 2094501233}
   ARCam: {fileID: 144520665}
   floorPlan: {fileID: 778683618}
   canSlappa: 0
   wasFirst: 0
   selectedFurniture: 
+--- !u!114 &863477637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 863477627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d06a120e24a85da4182a49037e28eef6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floorPlanPile: []
+  bathroomPile: []
+  mainRoomPile: []
+--- !u!114 &863477638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 863477627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfe62da6bacf0a64cbdd2216b440da57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floorPlan: {fileID: 778683618}
+  ARCam: {fileID: 144520665}
+  evaluationDistance: 8
+  timerFadeout: 500
 --- !u!1 &1016862062
 GameObject:
   m_ObjectHideFlags: 0

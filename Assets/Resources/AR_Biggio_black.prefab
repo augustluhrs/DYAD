@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 7499191070978739059}
   m_Layer: 0
   m_Name: AR_Biggio_black
-  m_TagString: Untagged
+  m_TagString: ektorp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295

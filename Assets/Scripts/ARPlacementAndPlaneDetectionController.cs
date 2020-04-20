@@ -16,6 +16,8 @@ public class ARPlacementAndPlaneDetectionController : MonoBehaviourPunCallbacks
     ARPlacementManager m_ARPlacementManager;
     BasicClickDropTest m_basicClickDropTest;
     BasicSpawnManager m_basicSpawnManager;
+    [SerializeField] GameObject floorPlan;
+    [SerializeField] GameObject ARCam;
 
     [Header("UI Elements")]
     public GameObject preMatchUI;
@@ -123,16 +125,30 @@ public class ARPlacementAndPlaneDetectionController : MonoBehaviourPunCallbacks
 
     public void DisableARPlacementAndPlaneDetection()
     {
-        m_ARPlaneManager.enabled = false;
-        m_ARPlacementManager.enabled = false;
-        SetAllPlanesActiveOrDeactive(false);
+        //now should only place if in valid spot
+        if (floorPlan.transform.position.y < ARCam.transform.position.y)
+        {
+            m_ARPlaneManager.enabled = false;
+            m_ARPlacementManager.enabled = false;
+            SetAllPlanesActiveOrDeactive(false);
 
-        placeButton.SetActive(false);
-        scaleSlider.SetActive(false);
-        adjustButton.SetActive(true);
-        readyButton.SetActive(true);
+            placeButton.SetActive(false);
+            scaleSlider.SetActive(false);
+            adjustButton.SetActive(true);
+            readyButton.SetActive(true);
 
-        instructionsText.text = "Press ready to begin";
+            instructionsText.text = "Press ready to begin";
+        }
+        // m_ARPlaneManager.enabled = false;
+        // m_ARPlacementManager.enabled = false;
+        // SetAllPlanesActiveOrDeactive(false);
+
+        // placeButton.SetActive(false);
+        // scaleSlider.SetActive(false);
+        // adjustButton.SetActive(true);
+        // readyButton.SetActive(true);
+
+        // instructionsText.text = "Press ready to begin";
         //should have one player's press trigger both, to highlight communicating
     }
 

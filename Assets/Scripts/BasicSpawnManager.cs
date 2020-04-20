@@ -5,6 +5,9 @@ using Photon.Pun;
 
 public class BasicSpawnManager : MonoBehaviour
 {
+    JoystickManager m_JoystickManager;
+    [SerializeField] GameObject wheelSelector;
+    
     public GameObject ARCam;
     // public GameObject avatarPrefab; //resources
     public GameObject floorPlan;
@@ -14,8 +17,10 @@ public class BasicSpawnManager : MonoBehaviour
 
     void Start()
     {
-        GameObject avatar = PhotonNetwork.Instantiate("AR_Avatar_BasicCube", ARCam.transform.position + new Vector3(0f, 1f, 0f), Quaternion.identity);
-        avatar.transform.parent = ARCam.transform.parent;
+        m_JoystickManager = wheelSelector.GetComponent<JoystickManager>();
+        
+        // GameObject avatar = PhotonNetwork.Instantiate("AR_Avatar_BasicCube", ARCam.transform.position + new Vector3(0f, 1f, 0f), Quaternion.identity);
+        // avatar.transform.parent = ARCam.transform.parent;
         //not getting the floor plan offset... //i dont need to? why did i write that? ah well i don't need to if they have the same floor plan location/rotation... i think
         // if (PhotonNetwork.CurrentRoom.PlayerCount == 1)
         //     wasFirst = true;
@@ -36,6 +41,8 @@ public class BasicSpawnManager : MonoBehaviour
                 if (touch.fingerId == 0) //first press
                 {
                     if (Input.GetTouch(0).phase == TouchPhase.Ended)
+                    //to prevent wheel selector from spawning, nope, doesn't work because by the time touch ended, the joystick defaults
+                    // if (Input.GetTouch(0).phase == TouchPhase.Ended && m_JoystickManager.fixedJoystick.Direction.y == 0f)
                     {
                         // GameObject otherSpawn;
                         // if (wasFirst)
