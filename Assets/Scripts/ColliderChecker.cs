@@ -45,8 +45,11 @@ public class ColliderChecker : MonoBehaviour
         if (isBathroom)
             m_ColliderManager.bathroomPile.Remove(other.gameObject);
         if (isMainRoom)
-            m_ColliderManager.mainRoomPile.Remove(other.gameObject);
-        
+        {
+           if(m_ColliderManager.mainRoomPile.Contains(other.gameObject)) //to prevent error if it's been removed
+                m_ColliderManager.mainRoomPile.Remove(other.gameObject); 
+        }
+            
         
         // colliderCount--;
         // if (isBathroom)

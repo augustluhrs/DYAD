@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class ObjectiveTest : MonoBehaviour
 {
@@ -8,17 +9,24 @@ public class ObjectiveTest : MonoBehaviour
     [SerializeField] GameObject ARCam;
     ColliderManager m_ColliderManager;
 
+    [Header("UI Stuff")]
+    [SerializeField] TextMeshProUGUI objectiveText;
+    [SerializeField] TextMeshProUGUI distanceText;
+
+
     //evaluation variables
     [Header("Evaluation Variables")]
     [Range(1f, 50f)] [SerializeField] float evaluationDistance = 10f;
     private float evaluationTimer = 0f;
-    [Range(1f, 1000f)] [SerializeField] float timerFadeout = 500f;
+    [Range(1f, 1000f)] [SerializeField] float timerFadeout = 50f;
     private float timerMax;
     private bool showEvaluation = false;
     private Color evaluationColor;
     private float personalSatisfaction = 0; //on scale of 100? no 1 so can use in color
     public List<int[]> objectives = new List<int[]>();
     private Dictionary<int, string> furnitureTypes = new Dictionary<int, string>();
+    private Dictionary<int, string> comparisonTypes = new Dictionary<int, string>();
+
 
     // enum FurnitureTypes 
     // {
@@ -33,6 +41,10 @@ public class ObjectiveTest : MonoBehaviour
         furnitureTypes.Add(1, "tullsta");
         furnitureTypes.Add(2, "brimnes");
         furnitureTypes.Add(3, "ektorp");
+
+        comparisonTypes.Add(0, "equals");
+        comparisonTypes.Add(1, "is less than");
+        comparisonTypes.Add(2, "is greater than");
     }
 
     void Start()
@@ -47,7 +59,10 @@ public class ObjectiveTest : MonoBehaviour
         evaluationTimer += Time.deltaTime;
 
         //check for distance
-        if (Vector3.Distance(ARCam.transform.position, floorPlan.transform.position) >= evaluationDistance)
+        float distFromFloorPlan = Vector3.Distance(ARCam.transform.position, floorPlan.transform.position);
+        // Debug.Log(distFromFloorPlan)
+        distanceText.text = "distance: " + distFromFloorPlan + ", alpha: " + evaluationColor.a.ToString();
+        if (distFromFloorPlan >= evaluationDistance)
             OnStepBackEvaluate();
 
         //just to test objective minus stepping back
@@ -59,6 +74,7 @@ public class ObjectiveTest : MonoBehaviour
         {
             //show and fade
             evaluationColor.a = (timerMax - evaluationTimer) / timerMax;
+            Debug.Log(evaluationColor.a);
             floorPlan.GetComponentInChildren<MeshRenderer>().material.SetColor("_Color", evaluationColor); //issues with text?
         }
         else if (showEvaluation && evaluationTimer >= timerMax) //done
@@ -169,14 +185,23 @@ public class ObjectiveTest : MonoBehaviour
 
     private void AssignObjectivesBasic()
     {
-        //should be if there are more tullstas than brimnes -- lol randomly picked 0123
+        //should be if there are more tullstas than ektorp -- lol randomly picked 0123
         int[] newObj = new int[4];
         newObj[0] = 0; //furniture comparison
-        newObj[1] = 1; //tullsta
-        newObj[2] = 2; //greater than
-        newObj[3] = 3; //brimnes
+        // newObj[1] = 1; //tullsta
+        // newObj[2] = 2; //greater than
+        // newObj[3] = 3; //ektorp
 
+        newObj[1] = Mathf.FloorToInt(Random.Range(0f, 3.99f)); //furniture type (out of 4)
+        newObj[2] = Mathf.FloorToInt(Random.Range(0f, 2.99f)); //relative (out of 3)
+        newObj[3] = Mathf.FloorToInt(Random.Range(0f, 3.99f));
+        while(newObj[3] == newObj[1])
+            newObj[3] = Mathf.FloorToInt(Random.Range(0f, 3.99f));
+
+        Debug.Log("objective: " + newObj[0] + " " + newObj[1] + " " + + newObj[2] + " " + newObj[3]);
         objectives.Add(newObj);
-        
+
+        //objective text for furn comparison
+        objectiveText.text = "Your goal: \nthe quantity of " + furnitureTypes[newObj[1]] + " " + comparisonTypes[newObj[2]] + " the quantity of " + furnitureTypes[newObj[3]] + " in the apartment."; // how to handle plurals lol (RWET)
     }
 }
