@@ -78,6 +78,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Odwar
       objectReference: {fileID: 0}
+    - target: {fileID: 1226325330599220, guid: 0aae1df3422d4a740be8e077a91f2e6b, type: 3}
+      propertyPath: m_TagString
+      value: odwar
+      objectReference: {fileID: 0}
     - target: {fileID: 4152240609245274, guid: 0aae1df3422d4a740be8e077a91f2e6b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

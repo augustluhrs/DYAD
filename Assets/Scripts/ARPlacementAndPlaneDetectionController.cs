@@ -77,7 +77,7 @@ public class ARPlacementAndPlaneDetectionController : MonoBehaviourPunCallbacks
         //hacky, should fix later [TODO] -- use OnPlayerEnter()?
         if(isAlone && PhotonNetwork.CurrentRoom.PlayerCount != 1)
         {
-            instructionsText.text = "Move phone around to detect planes and choose where to place your floorplan. Try to match size/orientation with your partner.";
+            instructionsText.text = "Point your camera down to the floor and move your phone around to find your floorplan. Once it appears, use the slider and scale it until you can see the whole apartment. Try to match size/orientation with your partner and press place when ready.";
             isAlone = false;
             placeButton.SetActive(true);
             roomText.text = "Partner: " + PhotonNetwork.PlayerListOthers[0].NickName;
