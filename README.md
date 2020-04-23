@@ -38,12 +38,12 @@
 2. Low Priority
    - [ ] Better-looking Buttons
    - [ ] Adjust the furniture spawnpoint to scale along with canvas (canvas -- camera?)
-   - [ ] Name/Credits/Social
+   - [X] Name/Credits/Social
    - [ ] Options (flip landscape? mirror control for left?)
-   - [ ] Version in bottom right
+   - [X] Version in bottom right (moved to top)
    - [ ] Blind Date -- jump in to a match blind
 3. Misc Ideas
-   - [ ] Exit Button?
+   - [X] Exit Button?
    - [ ] What options?
 
 ### Lobby Scene
@@ -60,8 +60,8 @@
 ### Player Profile
 1. High Priority
    1. Basic Player Objective
-      - [ ] Player 1
-      - [ ] Player 2
+      - [X] Player 1
+      - [X] Player 2
    2. Basic Assembly Manual
       - [ ] Image / Asset in game
       - [ ] Text / Visual of objective
@@ -108,22 +108,23 @@
       - [X] Quit Match
       - [X] Placement Plane Detection
       - [ ] Placement Quaternion Rotation
+      - [X] Valid Placement below ARCam Y?
    4. Match Interface
       - [X] Test with just single tap
-      - [ ] Working scroll wheel
-      - [ ] Scroll wheel local demo
-      - [ ] Scroll wheel integrated into network sync
+      - [X] Working scroll wheel
+      - [X] Scroll wheel local demo
+      - [X] Scroll wheel integrated into network sync
       - [X] Spawn rotation on camera Y
-      - [ ] Quit match button
+      - [X] Quit match button
    4. Game System
-      - [ ] Point tracking
+      - [X] Point tracking
       - [ ] Round Timer
       - [ ] Level management -- sync scene / master client
 2. Low Priority
    1. Evaluation
       1. In-game signaling
          - [ ] Reflection Boxes
-         - [ ] Floor Colors? Particles?
+         - [X] Floor Colors? Particles?
       2. Post-game win/lose
 	 - [ ] Argument bar animation
    2. Levels

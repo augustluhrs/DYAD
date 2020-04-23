@@ -5,6 +5,9 @@ using Photon.Pun;
 
 public class BasicSpawnManager : MonoBehaviour
 {
+    JoystickManager m_JoystickManager;
+    [SerializeField] GameObject wheelSelector;
+    
     public GameObject ARCam;
     // public GameObject avatarPrefab; //resources
     public GameObject floorPlan;
@@ -14,13 +17,15 @@ public class BasicSpawnManager : MonoBehaviour
 
     void Start()
     {
-        GameObject avatar = PhotonNetwork.Instantiate("AR_Avatar_BasicCube", ARCam.transform.position + new Vector3(0f, 1f, 0f), Quaternion.identity);
-        avatar.transform.parent = ARCam.transform.parent;
-        //not getting the floor plan offset...
-        if (PhotonNetwork.CurrentRoom.PlayerCount == 1)
-            wasFirst = true;
-        else
-            Debug.Log(PhotonNetwork.CurrentRoom.PlayerCount);
+        m_JoystickManager = wheelSelector.GetComponent<JoystickManager>();
+        
+        // GameObject avatar = PhotonNetwork.Instantiate("AR_Avatar_BasicCube", ARCam.transform.position + new Vector3(0f, 1f, 0f), Quaternion.identity);
+        // avatar.transform.parent = ARCam.transform.parent;
+        //not getting the floor plan offset... //i dont need to? why did i write that? ah well i don't need to if they have the same floor plan location/rotation... i think
+        // if (PhotonNetwork.CurrentRoom.PlayerCount == 1)
+        //     wasFirst = true;
+        // else
+        //     Debug.Log(PhotonNetwork.CurrentRoom.PlayerCount);
         // Debug.Log(selectedFurniture);
     }
 
@@ -36,6 +41,8 @@ public class BasicSpawnManager : MonoBehaviour
                 if (touch.fingerId == 0) //first press
                 {
                     if (Input.GetTouch(0).phase == TouchPhase.Ended)
+                    //to prevent wheel selector from spawning, nope, doesn't work because by the time touch ended, the joystick defaults
+                    // if (Input.GetTouch(0).phase == TouchPhase.Ended && m_JoystickManager.fixedJoystick.Direction.y == 0f)
                     {
                         // GameObject otherSpawn;
                         // if (wasFirst)
@@ -46,11 +53,11 @@ public class BasicSpawnManager : MonoBehaviour
                         // {
                         //     otherSpawn = PhotonNetwork.Instantiate("AR_Odwar_brown", ARCam.transform.position + (Vector3.one * 2), Quaternion.identity);
                         // }
-                        GameObject newSpawn = PhotonNetwork.Instantiate(selectedFurniture, ARCam.transform.position, Quaternion.identity);
-                        newSpawn.transform.eulerAngles = new Vector3(newSpawn.transform.eulerAngles.x, ARCam.transform.eulerAngles.y, newSpawn.transform.eulerAngles.z);
-                        newSpawn.transform.parent = floorPlan.transform;
-                        // otherSpawn.transform.parent = floorPlan.transform;
-
+                        GameObject newSpawn = PhotonNetwork.Instantiate(selectedFurniture, ARCam.transform.position, Quaternion.identity); //duh i need to do rotation here not below, oh wait cant because not prefab technically? fine b/c network updates before it's an issue hopefully
+                        // newSpawn.transform.eulerAngles = new Vector3(newSpawn.transform.eulerAngles.x, ARCam.transform.eulerAngles.y, newSpawn.transform.eulerAngles.z);
+                        //new Quaternion rotation?
+                        newSpawn.transform.rotation = new Quaternion(newSpawn.transform.rotation.x, ARCam.transform.rotation.y, newSpawn.transform.rotation.z, newSpawn.transform.rotation.w); //hope this works
+                        newSpawn.transform.parent = floorPlan.transform; //will this affect theirs if my floorplan moves??
                     }
                 }
             }

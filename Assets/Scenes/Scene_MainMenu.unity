@@ -2302,7 +2302,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: No, take me back!
+  m_text: No, go back
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e3ced6d262071834e84591c4167e85ac, type: 2}
   m_sharedMaterial: {fileID: 2643959425070996076, guid: e3ced6d262071834e84591c4167e85ac,
@@ -2459,7 +2459,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Yes, I will brave the labyrinth
+  m_text: Yes, exit
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e3ced6d262071834e84591c4167e85ac, type: 2}
   m_sharedMaterial: {fileID: 2643959425070996076, guid: e3ced6d262071834e84591c4167e85ac,
@@ -3134,7 +3134,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Are you sure you want to leave? The exit is impossible to find...
+  m_text: Are you sure you want to leave?
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e3ced6d262071834e84591c4167e85ac, type: 2}
   m_sharedMaterial: {fileID: 2643959425070996076, guid: e3ced6d262071834e84591c4167e85ac,
@@ -4135,7 +4135,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Alpha 0.3.3
+  m_text: Alpha 0.3.4
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e3ced6d262071834e84591c4167e85ac, type: 2}
   m_sharedMaterial: {fileID: 2643959425070996076, guid: e3ced6d262071834e84591c4167e85ac,

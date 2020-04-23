@@ -10,13 +10,25 @@ Hayley Pasley for being my captive playtester and constant supporter.
 James Hosken for his Unity guru-ness and guidance throughout this process.
 @tevfikufuk and his Udemy Course, Building Multiplayer AR Games in Unity with Photon, which was the technical foundation of Dyad's Networking.
 Adrian Bautista for help with the Dyad logo,
-Lydia Jessup and Rashida Kamal for the laborious process they went through to let me see their NYT AR project code,
+Lydia Jessup and Rashida Kamal for the laborious process they went through to let me see their NYT AR project code and for being my XCode guinea pigs <3
 Kathleen Wilson for Thesis cheerleading and wayfinding,
 Jane Friedhoff for the introduction to Unity and inspiring me to connect game design to radical efforts,
 Mimi Yin for providing a space to experiment using networked devices to explore group dynamics and community,
 Katherine Dillon for the 100 Days class and the fertile environment + practice within,
 
 THIS IS NOT A FINISHED LIST!
+
+and especially to all my lovely playtesters! 
+Hayley Pasley X 1000 
+James Hosken 
+Veronica Alfaro 
+Casey Conchinha 
+Michelle Cromer
+Barry Cromer
+Sam Cromer
+Rashida Kamal
+Chloe Rothbloom
+
 
 
 

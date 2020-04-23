@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 5944921142387738795}
   m_Layer: 0
   m_Name: AR_Tullsta_white
-  m_TagString: Untagged
+  m_TagString: tullsta
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -32,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 7315059527584567069}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
