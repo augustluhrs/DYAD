@@ -26,11 +26,13 @@ public class ColliderManager : MonoBehaviour
     void Update()
     {
         //going to have issues if network removes when client leaves.. but maybe that's not an issue
+        /* //enumeration issue, need to resolve later
         foreach (GameObject furn in mainRoomPile) //too expensive?
         {
             if (bathroomPile.Contains(furn)) //this is annoying because exclusive...
                 mainRoomPile.Remove(furn);
         }
+        */
         // mainRoom.GetComponent<BoxCollider>().OnTr/
         // colliderText.text = "Main Room: " + mainRoomCount + " -- Bathroom: " + bathroomCount;
     }

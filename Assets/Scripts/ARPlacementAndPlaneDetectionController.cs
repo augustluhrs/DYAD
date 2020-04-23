@@ -16,6 +16,7 @@ public class ARPlacementAndPlaneDetectionController : MonoBehaviourPunCallbacks
     ARPlacementManager m_ARPlacementManager;
     BasicClickDropTest m_basicClickDropTest;
     BasicSpawnManager m_basicSpawnManager;
+    GameplayManager m_GameplayManager;
     [SerializeField] GameObject floorPlan;
     [SerializeField] GameObject ARCam;
 
@@ -39,6 +40,7 @@ public class ARPlacementAndPlaneDetectionController : MonoBehaviourPunCallbacks
         m_ARPlaneManager = GetComponent<ARPlaneManager>();
         m_basicClickDropTest = GetComponent<BasicClickDropTest>();
         m_basicSpawnManager = GetComponent<BasicSpawnManager>();
+        m_GameplayManager = GetComponent<GameplayManager>();
     }
     void Start()
     {
@@ -93,6 +95,7 @@ public class ARPlacementAndPlaneDetectionController : MonoBehaviourPunCallbacks
         matchUI.SetActive(true);
         // m_basicClickDropTest.enabled = true;
         m_basicSpawnManager.canSlappa = true;
+        m_GameplayManager.hasRoundStarted = true;
     }
     
     public void OnQuitCheck()
@@ -137,7 +140,7 @@ public class ARPlacementAndPlaneDetectionController : MonoBehaviourPunCallbacks
             adjustButton.SetActive(true);
             readyButton.SetActive(true);
 
-            instructionsText.text = "Press ready to begin";
+            instructionsText.text = "To start, press READY at the same time as your partner!";
         }
         // m_ARPlaneManager.enabled = false;
         // m_ARPlacementManager.enabled = false;
@@ -163,7 +166,8 @@ public class ARPlacementAndPlaneDetectionController : MonoBehaviourPunCallbacks
         adjustButton.SetActive(false);
         readyButton.SetActive(false);
 
-        instructionsText.text = "Move phone around to detect planes and choose where to place your floorplan. Try to match size/orientation with your partner.";
+        // instructionsText.text = "Move phone around to detect planes and choose where to place your floorplan. Try to match size/orientation with your partner.";
+        instructionsText.text = "Point your camera down to the floor and move your phone around to find your floorplan. Once it appears, use the slider and scale it until you can see the whole apartment. Try to match size/orientation with your partner and press place when ready.";
 
     }
 

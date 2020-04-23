@@ -8,6 +8,7 @@ public class ObjectiveTest : MonoBehaviour
     [SerializeField] GameObject floorPlan;
     [SerializeField] GameObject ARCam;
     ColliderManager m_ColliderManager;
+    [SerializeField] GameObject satisfactionViz;
 
     [Header("UI Stuff")]
     [SerializeField] TextMeshProUGUI objectiveText;
@@ -16,9 +17,9 @@ public class ObjectiveTest : MonoBehaviour
 
     //evaluation variables
     [Header("Evaluation Variables")]
-    [Range(1f, 50f)] [SerializeField] float evaluationDistance = 10f;
+    [Range(1f, 50f)] [SerializeField] float evaluationDistance = 7f;
     private float evaluationTimer = 0f;
-    [Range(1f, 1000f)] [SerializeField] float timerFadeout = 50f;
+    [Range(1f, 1000f)] [SerializeField] float timerFadeout = 10f;
     private float timerMax;
     private bool showEvaluation = false;
     private Color evaluationColor;
@@ -61,24 +62,26 @@ public class ObjectiveTest : MonoBehaviour
         //check for distance
         float distFromFloorPlan = Vector3.Distance(ARCam.transform.position, floorPlan.transform.position);
         // Debug.Log(distFromFloorPlan)
-        distanceText.text = "distance: " + distFromFloorPlan + ", alpha: " + evaluationColor.a.ToString();
+        // distanceText.text = "distance: " + distFromFloorPlan + ", alpha: " + evaluationColor.a.ToString() + " timer: " + (timerMax - evaluationTimer) 
+        // + " max: " + timerMax + " evalTimer: " + evaluationTimer + " time fade: " + timerFadeout;
+        distanceText.text = "distance: " + distFromFloorPlan;
         if (distFromFloorPlan >= evaluationDistance)
             OnStepBackEvaluate();
 
-        //just to test objective minus stepping back
-        // OnStepBackEvaluate();
-
-
         //if evaluating, show and fade
-        if (showEvaluation && evaluationTimer <= timerMax)
+        else if (showEvaluation && evaluationTimer <= timerMax)
         {
             //show and fade
-            evaluationColor.a = (timerMax - evaluationTimer) / timerMax;
-            Debug.Log(evaluationColor.a);
-            floorPlan.GetComponentInChildren<MeshRenderer>().material.SetColor("_Color", evaluationColor); //issues with text?
+            // evaluationColor.a = 1f; //fixed by resetting to 1 every time
+            evaluationColor.a = (timerMax - evaluationTimer) / timerFadeout; //nope just a dumbass.
+            // evaluationColor.a = (10f - 5f) / 10f;
+
+            // Debug.Log(evaluationColor.a);
+            // floorPlan.GetComponentInChildren<MeshRenderer>().material.SetColor("_Color", evaluationColor); //issues with text?
+            satisfactionViz.GetComponent<MeshRenderer>().material.SetColor("_Color", evaluationColor);       
         }
-        else if (showEvaluation && evaluationTimer >= timerMax) //done
-            showEvaluation = false; //guess i don't need this if it fades enough? could use transparency
+        // else if (showEvaluation && evaluationTimer >= timerMax) //done
+        //     showEvaluation = false; //guess i don't need this if it fades enough? could use transparency
         
     }
 
@@ -93,7 +96,9 @@ public class ObjectiveTest : MonoBehaviour
         // if (personalSatisfaction >= 80f) //green
         //     evaluationColor = new Color(0f, 1f, 0f);
         // else if (personalSatisfaction >= 40f) //yellow
-        evaluationColor = new Color (1f - personalSatisfaction, personalSatisfaction, 0f); //if 0, red, if 1, green, if half, brownish
+        evaluationColor = new Color (1f - personalSatisfaction, personalSatisfaction, 0f, 1f); //if 0, red, if 1, green, if half, brownish
+        satisfactionViz.GetComponent<MeshRenderer>().material.SetColor("_Color", evaluationColor);       
+
     }
 
     private float CheckSatisfaction() //compare to personal goals
@@ -198,10 +203,16 @@ public class ObjectiveTest : MonoBehaviour
         while(newObj[3] == newObj[1])
             newObj[3] = Mathf.FloorToInt(Random.Range(0f, 3.99f));
 
-        Debug.Log("objective: " + newObj[0] + " " + newObj[1] + " " + + newObj[2] + " " + newObj[3]);
+        // Debug.Log("objective: " + newObj[0] + " " + newObj[1] + " " + + newObj[2] + " " + newObj[3]);
         objectives.Add(newObj);
 
         //objective text for furn comparison
-        objectiveText.text = "Your goal: \nthe quantity of " + furnitureTypes[newObj[1]] + " " + comparisonTypes[newObj[2]] + " the quantity of " + furnitureTypes[newObj[3]] + " in the apartment."; // how to handle plurals lol (RWET)
+        objectiveText.text = "Your goal: \nthe amount of " + furnitureTypes[newObj[1]] + " " + comparisonTypes[newObj[2]] + " the amount of " + furnitureTypes[newObj[3]] + " in the apartment."; // how to handle plurals lol (RWET)
+    }
+
+    private void AddObjective(List<int[]> currentObjectives)
+    {
+        //check against old objectives to ensure no conflicts?
+        //would be nice if they got two new ones and could get rid of an old one -- more similar to the therapy idea originally
     }
 }

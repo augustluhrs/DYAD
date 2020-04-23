@@ -10,6 +10,7 @@ TagManager:
   - tullsta
   - brimnes
   - ektorp
+  - satisfaction
   layers:
   - Default
   - TransparentFX
