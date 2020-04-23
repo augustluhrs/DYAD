@@ -36,7 +36,7 @@
 1. Canvas
    - Canvas Scaler: Scale to Screen Size && Expand
      - Nope that doesn't work either...
-
+   - Okay, gotta anchor to the corners!
 ### Level Prefabs
 1. Model
    - Going pretty freeform right now with walls and colliders other than using the average sqft as a guide.
