@@ -17,6 +17,8 @@ public class ARPlacementAndPlaneDetectionController : MonoBehaviourPunCallbacks
     BasicClickDropTest m_basicClickDropTest;
     BasicSpawnManager m_basicSpawnManager;
     GameplayManager m_GameplayManager;
+    GameplayLTDemoManager m_GameplayLTDemoManager;
+
     [SerializeField] GameObject floorPlan;
     [SerializeField] GameObject ARCam;
 
@@ -41,6 +43,8 @@ public class ARPlacementAndPlaneDetectionController : MonoBehaviourPunCallbacks
         m_basicClickDropTest = GetComponent<BasicClickDropTest>();
         m_basicSpawnManager = GetComponent<BasicSpawnManager>();
         m_GameplayManager = GetComponent<GameplayManager>();
+        m_GameplayLTDemoManager = GetComponent<GameplayLTDemoManager>();
+
     }
     void Start()
     {
@@ -96,6 +100,7 @@ public class ARPlacementAndPlaneDetectionController : MonoBehaviourPunCallbacks
         // m_basicClickDropTest.enabled = true;
         m_basicSpawnManager.canSlappa = true;
         m_GameplayManager.hasRoundStarted = true;
+        m_GameplayLTDemoManager.hasRoundStarted = true;
     }
     
     public void OnQuitCheck()
