@@ -25,12 +25,13 @@ public class ColliderChecker : MonoBehaviour
     private void OnTriggerEnter(Collider other) //need to see if is too expensive...
     {
         m_ColliderManager.floorPlanPile.Add(other.gameObject);
+        /*
         if (isBathroom)
             m_ColliderManager.bathroomPile.Add(other.gameObject);
         // can't do this because not a discrete collider...
         if (isMainRoom)
             m_ColliderManager.mainRoomPile.Add(other.gameObject);
-        
+        */
         
         // colliderCount++;
         // if (isBathroom)
@@ -42,6 +43,7 @@ public class ColliderChecker : MonoBehaviour
     private void OnTriggerExit(Collider other) 
     {
         m_ColliderManager.floorPlanPile.Remove(other.gameObject);
+        /*
         if (isBathroom)
             m_ColliderManager.bathroomPile.Remove(other.gameObject);
         if (isMainRoom)
@@ -49,7 +51,7 @@ public class ColliderChecker : MonoBehaviour
            if(m_ColliderManager.mainRoomPile.Contains(other.gameObject)) //to prevent error if it's been removed
                 m_ColliderManager.mainRoomPile.Remove(other.gameObject); 
         }
-            
+        */
         
         // colliderCount--;
         // if (isBathroom)

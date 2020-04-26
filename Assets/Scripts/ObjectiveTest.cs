@@ -23,7 +23,7 @@ public class ObjectiveTest : MonoBehaviour
     private float timerMax;
     private bool showEvaluation = false;
     private Color evaluationColor;
-    private float personalSatisfaction = 0; //on scale of 100? no 1 so can use in color
+    public float personalSatisfaction = 0; //on scale of 100? no 1 so can use in color
     public List<int[]> objectives = new List<int[]>();
     private Dictionary<int, string> furnitureTypes = new Dictionary<int, string>();
     private Dictionary<int, string> comparisonTypes = new Dictionary<int, string>();
@@ -52,6 +52,8 @@ public class ObjectiveTest : MonoBehaviour
     {
         //assign personal objectives
         // AssignObjectives();
+        //  int[] placeholder = new int[4];
+        // objectives.Add(placeholder);
         AssignObjectivesBasic();
     }
 
@@ -64,7 +66,7 @@ public class ObjectiveTest : MonoBehaviour
         // Debug.Log(distFromFloorPlan)
         // distanceText.text = "distance: " + distFromFloorPlan + ", alpha: " + evaluationColor.a.ToString() + " timer: " + (timerMax - evaluationTimer) 
         // + " max: " + timerMax + " evalTimer: " + evaluationTimer + " time fade: " + timerFadeout;
-        distanceText.text = "distance: " + distFromFloorPlan;
+        // distanceText.text = "distance: " + distFromFloorPlan;
         if (distFromFloorPlan >= evaluationDistance)
             OnStepBackEvaluate();
 
@@ -188,7 +190,7 @@ public class ObjectiveTest : MonoBehaviour
         }
     }
 
-    private void AssignObjectivesBasic()
+    public void AssignObjectivesBasic()
     {
         //should be if there are more tullstas than ektorp -- lol randomly picked 0123
         int[] newObj = new int[4];
@@ -204,6 +206,7 @@ public class ObjectiveTest : MonoBehaviour
             newObj[3] = Mathf.FloorToInt(Random.Range(0f, 3.99f));
 
         // Debug.Log("objective: " + newObj[0] + " " + newObj[1] + " " + + newObj[2] + " " + newObj[3]);
+        // objectives.RemoveAt(0);
         objectives.Add(newObj);
 
         //objective text for furn comparison
@@ -214,5 +217,10 @@ public class ObjectiveTest : MonoBehaviour
     {
         //check against old objectives to ensure no conflicts?
         //would be nice if they got two new ones and could get rid of an old one -- more similar to the therapy idea originally
+    }
+
+    public void ResetObjectives()
+    {
+        objectives = new List<int[]>();
     }
 }

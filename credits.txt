@@ -15,12 +15,13 @@ Kathleen Wilson for Thesis cheerleading and wayfinding,
 Jane Friedhoff for the introduction to Unity and inspiring me to connect game design to radical efforts,
 Mimi Yin for providing a space to experiment using networked devices to explore group dynamics and community,
 Katherine Dillon for the 100 Days class and the fertile environment + practice within,
+Matt Ross for iOS XCode testing and feedback
 
 THIS IS NOT A FINISHED LIST!
 
 and especially to all my lovely playtesters! 
 Hayley Pasley X 1000 
-James Hosken 
+James Hosken X 100
 Veronica Alfaro 
 Casey Conchinha 
 Michelle Cromer
@@ -28,7 +29,18 @@ Barry Cromer
 Sam Cromer
 Rashida Kamal
 Chloe Rothbloom
-
+Sachi Leith
+West Portillo
+Alex Cole
+Matt Ross
+Brent Bailey
+Casey Conchinha
+Arnab Chakravarty
+Atharva Patil
+Lydia Jessup
+Mattan Cohen
+Nicte Sobrino
+Ryan Parsons
 
 
 
@@ -43,3 +55,4 @@ Inspired by:
 TJ Hughes
 
 Ikea Assets from Egor Ilin via Asset Store -- thank you!!!!
+Floor Assets from Casual 2D

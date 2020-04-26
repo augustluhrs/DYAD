@@ -12,7 +12,7 @@ public class BasicSpawnManager : MonoBehaviour
     // public GameObject avatarPrefab; //resources
     public GameObject floorPlan;
     public bool canSlappa = false;
-    public bool wasFirst = false;
+    // public bool wasFirst = false;
     public string selectedFurniture;
 
     void Start()
