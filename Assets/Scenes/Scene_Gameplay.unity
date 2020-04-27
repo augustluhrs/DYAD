@@ -2728,7 +2728,7 @@ MonoBehaviour:
   satisfactionPenalty: 50
   manualSectionsUnlocked: 0
   hasRoundStarted: 0
-  roundTime: 3
+  roundTime: 60
 --- !u!1 &885677041
 GameObject:
   m_ObjectHideFlags: 0
