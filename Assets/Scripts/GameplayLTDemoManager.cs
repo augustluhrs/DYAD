@@ -9,12 +9,14 @@ public class GameplayLTDemoManager : MonoBehaviour
     ObjectiveTest m_ObjectiveTest;
     ColliderManager m_ColliderManager;
     BasicSpawnManager m_BasicSpawnManager;
+    ManualManager m_ManualManager;
     // JoystickManager m_JoystickManager;
     // [SerializeField] GameObject wheelSelector;
 
     
     [Header("UI Elements")] //should maybe merge with ARPlacementandSceneDetection or w/e
     [SerializeField] Slider argumentMeter;
+    [SerializeField] GameObject manualScroll;
     [SerializeField] GameObject gameOverUI;
     [SerializeField] TextMeshProUGUI roundOverText;
     public float personalSatisfaction = 0;
@@ -35,7 +37,7 @@ public class GameplayLTDemoManager : MonoBehaviour
         m_ColliderManager = GetComponent<ColliderManager>();
         m_BasicSpawnManager = GetComponent<BasicSpawnManager>();
         // m_JoystickManager = wheelSelector.GetComponent<JoystickManager>();
-
+        m_ManualManager = manualScroll.GetComponent<ManualManager>();
         // roundNum = 0;
         argumentMeter.maxValue = roundTime;
         hasRoundStarted = false;

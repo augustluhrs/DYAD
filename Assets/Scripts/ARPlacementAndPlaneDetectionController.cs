@@ -63,16 +63,18 @@ public class ARPlacementAndPlaneDetectionController : MonoBehaviourPunCallbacks
         if(PhotonNetwork.CurrentRoom.PlayerCount == 1)
         {
             instructionsText.text = "Waiting for other player";
-            isAlone = true;
+            // isAlone = true;
         } 
         else
         {
-            instructionsText.text = "Move phone around to detect planes and choose where to place your floorplan. Try to match size/orientation with your partner.";
-            isAlone = false;
-            placeButton.SetActive(true);
+            //all this happens in update, redundant:
+
+            // instructionsText.text = "Move phone around to detect planes and choose where to place your floorplan. Try to match size/orientation with your partner.";
+            // isAlone = false;
+            // placeButton.SetActive(true);
             // string partnerName;
             // foreach (PhotonPlayer p in PhotonNetwork.player)
-            roomText.text = "Partner: " + PhotonNetwork.PlayerListOthers[0].NickName;
+            // roomText.text = "Partner: " + PhotonNetwork.PlayerListOthers[0].NickName;
         }
             
     }
@@ -83,7 +85,7 @@ public class ARPlacementAndPlaneDetectionController : MonoBehaviourPunCallbacks
         //hacky, should fix later [TODO] -- use OnPlayerEnter()?
         if(isAlone && PhotonNetwork.CurrentRoom.PlayerCount != 1)
         {
-            instructionsText.text = "Point your camera down to the floor and move your phone around to find your floorplan. Once it appears, use the slider and scale it until you can see the whole apartment. Try to match size/orientation with your partner and press place when ready.";
+            instructionsText.text = "Point your camera down to the floor and move your phone around to find your floorplan. Once it appears, use the slider and scale it until you can see the whole apartment. Press place when ready.";
             isAlone = false;
             placeButton.SetActive(true);
             roomText.text = "Partner: " + PhotonNetwork.PlayerListOthers[0].NickName;
@@ -172,7 +174,7 @@ public class ARPlacementAndPlaneDetectionController : MonoBehaviourPunCallbacks
         readyButton.SetActive(false);
 
         // instructionsText.text = "Move phone around to detect planes and choose where to place your floorplan. Try to match size/orientation with your partner.";
-        instructionsText.text = "Point your camera down to the floor and move your phone around to find your floorplan. Once it appears, use the slider and scale it until you can see the whole apartment. Try to match size/orientation with your partner and press place when ready.";
+        instructionsText.text = "Point your camera down to the floor and move your phone around to find your floorplan. Once it appears, use the slider and scale it until you can see the whole apartment. Press place when ready.";
 
     }
 

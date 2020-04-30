@@ -9,6 +9,7 @@ public class ObjectiveTest : MonoBehaviour
     [SerializeField] GameObject ARCam;
     ColliderManager m_ColliderManager;
     [SerializeField] GameObject satisfactionViz;
+    // [SerializeField] GameObject manualScroll;
 
     [Header("UI Stuff")]
     [SerializeField] TextMeshProUGUI objectiveText;

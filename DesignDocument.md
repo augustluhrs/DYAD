@@ -28,7 +28,7 @@
 
 ### Assets/Resources
 1. Prefab Settings
-   - All prefabs scaled to .8 for now 
+   - All prefabs scaled to .5 for now (I know there can be physics issues... to address)
    - Name standard = "AR_FurnitureName_color" (note capitalization)
    - Have to attach PhotonView and MySynchronizationScript
 
