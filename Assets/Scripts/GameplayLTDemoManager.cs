@@ -70,7 +70,8 @@ public class GameplayLTDemoManager : MonoBehaviour
                 
                 //show round over screen
                 gameOverUI.SetActive(true);
-                roundOverText.text = "Round: " + roundNum + "\nManual Sections Unlocked: " + manualSectionsUnlocked + "\nLife Satisfaction: " + lifeSatisfaction + "\nLet's see what you thought of that...";
+                // roundOverText.text = "Round: " + roundNum + "\nManual Sections Unlocked: " + manualSectionsUnlocked + "\nLife Satisfaction: " + lifeSatisfaction + "\nLet's see what you thought of that...";
+                roundOverText.text = "Round: " + roundNum + "\nLife Satisfaction: " + lifeSatisfaction + "\nLet's see what you thought of that...";
 
                 /*
                 personalSatisfaction = m_ObjectiveTest.personalSatisfaction;
@@ -89,6 +90,8 @@ public class GameplayLTDemoManager : MonoBehaviour
     public void OnManualUnlock()
     {
         manualSectionsUnlocked++;
+        if (manualSectionsUnlocked <= 6f)
+            m_ManualManager.AddNewManualSection();
         lifeSatisfaction -= satisfactionPenalty;
         UpdateRoundText();
     }
@@ -101,7 +104,8 @@ public class GameplayLTDemoManager : MonoBehaviour
 
     public void UpdateRoundText()
     {
-        roundOverText.text = "Round: " + roundNum + "\nManual Sections Unlocked: " + manualSectionsUnlocked + "\nLife Satisfaction: " + lifeSatisfaction + "\nLet's see what you thought of that...";
+        // roundOverText.text = "Round: " + roundNum + "\nManual Sections Unlocked: " + manualSectionsUnlocked + "\nLife Satisfaction: " + lifeSatisfaction + "\nLet's see what you thought of that...";
+        roundOverText.text = "Round: " + roundNum + "\nLife Satisfaction: " + lifeSatisfaction + "\nLet's see what you thought of that...";
     }
 
     public void OnNextRound() //advance (manual until arcade events)

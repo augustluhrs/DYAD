@@ -34,7 +34,7 @@ public class ARPlacementAndPlaneDetectionController : MonoBehaviourPunCallbacks
     public TextMeshProUGUI instructionsText;
     public GameObject scaleSlider;
 
-    private bool isAlone;
+    private bool isAlone = true;
 
 
     private void Awake() {

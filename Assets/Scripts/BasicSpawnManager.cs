@@ -44,9 +44,10 @@ public class BasicSpawnManager : MonoBehaviour
 
             foreach (Touch touch in Input.touches)
             {
-                if (touch.fingerId == 0 && 
-                    (touch.position.x >= Screen.width/3f || touch.position.y >= Screen.height/2f))
-                    //first press and not over furn interface
+                if (touch.fingerId == 0 && //first press
+                    (touch.position.x >= Screen.width/3f && touch.position.y <= 2 * Screen.height/3f)) //so now just bottom right taps
+                    // ((touch.position.x >= Screen.width/3f || touch.position.y >= Screen.height/2f) && //not trio interface
+                    // (touch.position.x <= Screen.width/3f ||  touch.position.y <= 2 * Screen.height/3f)) //not scroll view
                 {
                     if (Input.GetTouch(0).phase == TouchPhase.Ended)
                     //to prevent wheel selector from spawning, nope, doesn't work because by the time touch ended, the joystick defaults

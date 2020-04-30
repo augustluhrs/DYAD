@@ -39,9 +39,15 @@ public class TrioJoystickManager : MonoBehaviour
     void Start()
     {
         if (firstPlayer)
+        {
             selectedIcon = "AR_Tullsta_white";
+            rightIcon.GetComponent<Image>().sprite = icons[2];
+        }
         else
+        {
             selectedIcon = "AR_Tullsta_black";
+            rightIcon.GetComponent<Image>().sprite = icons[3];
+        }
         beskrivning = "tullsta";
         m_BasicSpawnManager = GameObject.Find("AR Session Origin").GetComponent<BasicSpawnManager>();
         beskrivningTextBottom.SetActive(true);
