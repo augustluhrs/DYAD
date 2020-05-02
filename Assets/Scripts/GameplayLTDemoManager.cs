@@ -17,6 +17,7 @@ public class GameplayLTDemoManager : MonoBehaviour
     [Header("UI Elements")] //should maybe merge with ARPlacementandSceneDetection or w/e
     [SerializeField] Slider argumentMeter;
     [SerializeField] GameObject manualScroll;
+    [SerializeField] GameObject matchUI;
     [SerializeField] GameObject gameOverUI;
     [SerializeField] TextMeshProUGUI roundOverText;
     public float personalSatisfaction = 0;
@@ -28,6 +29,7 @@ public class GameplayLTDemoManager : MonoBehaviour
     private float roundNum = 1;
     //argument timer stuff
     private float countdownTimer; //evalTimer
+    private float lastRoundTime;
     // private float countdownMax; //timerMax
     [Range(1f, 200f)][SerializeField] float roundTime = 60f; //timerFadeout
 
@@ -52,14 +54,17 @@ public class GameplayLTDemoManager : MonoBehaviour
 
         if(hasRoundStarted)
         {
+            countdownTimer += Time.deltaTime;
+            
             if (countdownTimer < roundTime) //still going
             {
-                countdownTimer += Time.deltaTime;
+                // countdownTimer += Time.deltaTime;
                 // argumentMeter.value = (countdownMax - countdownTimer) / roundTime;
                 argumentMeter.value =  (countdownTimer / roundTime) * roundTime;
-                Debug.Log("count: " + countdownTimer + " time: " + Time.deltaTime + " round time: " + roundTime);
+                // Debug.Log("count: " + countdownTimer + " time: " + Time.deltaTime + " round time: " + roundTime);
         
             }
+            /*
             else //round over
             {
                 //reset everything
@@ -72,21 +77,40 @@ public class GameplayLTDemoManager : MonoBehaviour
                 gameOverUI.SetActive(true);
                 // roundOverText.text = "Round: " + roundNum + "\nManual Sections Unlocked: " + manualSectionsUnlocked + "\nLife Satisfaction: " + lifeSatisfaction + "\nLet's see what you thought of that...";
                 roundOverText.text = "Round: " + roundNum + "\nLife Satisfaction: " + lifeSatisfaction + "\nLet's see what you thought of that...";
-
-                /*
-                personalSatisfaction = m_ObjectiveTest.personalSatisfaction;
-                if (personalSatisfaction >= .5f)
-                {
-                    roundOverText.text = "Round: " + roundNum + "\nYou like this layout!\nPersonal Satisfaction: " + personalSatisfaction;
-                }
-                else 
-                {
-                    roundOverText.text = "Round: " + roundNum + "\nUgh. You do not like this layout.\nPersonal Satisfaction: " + personalSatisfaction;
-                }
-                */
+                
+                
+                // personalSatisfaction = m_ObjectiveTest.personalSatisfaction;
+                // if (personalSatisfaction >= .5f)
+                // {
+                //     roundOverText.text = "Round: " + roundNum + "\nYou like this layout!\nPersonal Satisfaction: " + personalSatisfaction;
+                // }
+                // else 
+                // {
+                //     roundOverText.text = "Round: " + roundNum + "\nUgh. You do not like this layout.\nPersonal Satisfaction: " + personalSatisfaction;
+                // }
+                
             }
+            */
         }
     }
+
+    public void OnEndRound()
+    {
+        //reset everything
+        lastRoundTime = countdownTimer;
+        hasRoundStarted = false;
+        argumentMeter.value = 0; 
+        m_BasicSpawnManager.canSlappa = false;
+        
+        //show round over screen
+        matchUI.SetActive(false);
+        gameOverUI.SetActive(true);
+
+        // roundOverText.text = "Round: " + roundNum + "\nManual Sections Unlocked: " + manualSectionsUnlocked + "\nLife Satisfaction: " + lifeSatisfaction + "\nLet's see what you thought of that...";
+        roundOverText.text = "Round: " + roundNum + "\nTime Spent: " + lastRoundTime + "\nLife Satisfaction: " + lifeSatisfaction + "\nLet's see what you thought of that...";
+    }
+
+
     public void OnManualUnlock()
     {
         manualSectionsUnlocked++;
@@ -105,18 +129,20 @@ public class GameplayLTDemoManager : MonoBehaviour
     public void UpdateRoundText()
     {
         // roundOverText.text = "Round: " + roundNum + "\nManual Sections Unlocked: " + manualSectionsUnlocked + "\nLife Satisfaction: " + lifeSatisfaction + "\nLet's see what you thought of that...";
-        roundOverText.text = "Round: " + roundNum + "\nLife Satisfaction: " + lifeSatisfaction + "\nLet's see what you thought of that...";
+        // roundOverText.text = "Round: " + roundNum + "\nLife Satisfaction: " + lifeSatisfaction + "\nLet's see what you thought of that...";
+        roundOverText.text = "Round: " + roundNum + "\nTime Spent: " + lastRoundTime + "\nLife Satisfaction: " + lifeSatisfaction + "\nLet's see what you thought of that...";
     }
 
     public void OnNextRound() //advance (manual until arcade events)
     {
         roundNum++;
+        countdownTimer = 0;
         hasRoundStarted = true;
+        matchUI.SetActive(true);
         gameOverUI.SetActive(false);
         // m_ObjectiveTest.AssignObjectivesBasic();
         m_ColliderManager.ResetFloorPlan();
         m_BasicSpawnManager.canSlappa = true;
-
     }
     /*
     public void OnStartOver() //reset everything without placing new floorplan

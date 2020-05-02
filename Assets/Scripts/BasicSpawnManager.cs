@@ -20,17 +20,17 @@ public class BasicSpawnManager : MonoBehaviour
 
     void Start()
     {
-        m_TrioJoystickManager = trioWheelSelector.GetComponent<TrioJoystickManager>();
+        // m_TrioJoystickManager = trioWheelSelector.GetComponent<TrioJoystickManager>();
         
         // m_JoystickManager = wheelSelector.GetComponent<JoystickManager>();
         
         // GameObject avatar = PhotonNetwork.Instantiate("AR_Avatar_BasicCube", ARCam.transform.position + new Vector3(0f, 1f, 0f), Quaternion.identity);
         // avatar.transform.parent = ARCam.transform.parent;
         //not getting the floor plan offset... //i dont need to? why did i write that? ah well i don't need to if they have the same floor plan location/rotation... i think
-        if (PhotonNetwork.CurrentRoom.PlayerCount == 1)
-            m_TrioJoystickManager.firstPlayer = true;
-        else
-            m_TrioJoystickManager.firstPlayer = false;
+        // if (PhotonNetwork.CurrentRoom.PlayerCount == 1)
+        //     m_TrioJoystickManager.firstPlayer = true;
+        // else
+        //     m_TrioJoystickManager.firstPlayer = false;
             // Debug.Log(PhotonNetwork.CurrentRoom.PlayerCount);
         // Debug.Log(selectedFurniture);
     }

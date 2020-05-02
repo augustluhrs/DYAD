@@ -15,7 +15,8 @@ public class ManualManager : MonoBehaviour
     private List<GameObject> manual = new List<GameObject>();
     private List<string> sections = new List<string>();
 
-    void Start()
+    // void Start()
+    public void AssignManuals()
     {
         m_TrioJoystickManager = trioSelector.GetComponent<TrioJoystickManager>();
         firstPlayer = m_TrioJoystickManager.firstPlayer;

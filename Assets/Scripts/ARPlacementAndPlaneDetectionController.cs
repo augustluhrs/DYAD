@@ -18,9 +18,13 @@ public class ARPlacementAndPlaneDetectionController : MonoBehaviourPunCallbacks
     BasicSpawnManager m_basicSpawnManager;
     GameplayManager m_GameplayManager;
     GameplayLTDemoManager m_GameplayLTDemoManager;
+    ManualManager m_ManualManager;
+    TrioJoystickManager m_TrioJoystickManager;
 
     [SerializeField] GameObject floorPlan;
     [SerializeField] GameObject ARCam;
+    [SerializeField] GameObject manualScroll;
+    [SerializeField] GameObject trioSelector;
 
     [Header("UI Elements")]
     public GameObject preMatchUI;
@@ -44,8 +48,10 @@ public class ARPlacementAndPlaneDetectionController : MonoBehaviourPunCallbacks
         m_basicSpawnManager = GetComponent<BasicSpawnManager>();
         m_GameplayManager = GetComponent<GameplayManager>();
         m_GameplayLTDemoManager = GetComponent<GameplayLTDemoManager>();
-
+        m_ManualManager = manualScroll.GetComponent<ManualManager>();
+        m_TrioJoystickManager = trioSelector.GetComponent<TrioJoystickManager>();
     }
+
     void Start()
     {
         preMatchUI.SetActive(true);
@@ -63,10 +69,14 @@ public class ARPlacementAndPlaneDetectionController : MonoBehaviourPunCallbacks
         if(PhotonNetwork.CurrentRoom.PlayerCount == 1)
         {
             instructionsText.text = "Waiting for other player";
+            m_TrioJoystickManager.firstPlayer = true;
+
             // isAlone = true;
         } 
         else
-        {
+            m_TrioJoystickManager.firstPlayer = false;
+        // else
+        // {
             //all this happens in update, redundant:
 
             // instructionsText.text = "Move phone around to detect planes and choose where to place your floorplan. Try to match size/orientation with your partner.";
@@ -75,7 +85,7 @@ public class ARPlacementAndPlaneDetectionController : MonoBehaviourPunCallbacks
             // string partnerName;
             // foreach (PhotonPlayer p in PhotonNetwork.player)
             // roomText.text = "Partner: " + PhotonNetwork.PlayerListOthers[0].NickName;
-        }
+        // }
             
     }
 
@@ -103,6 +113,8 @@ public class ARPlacementAndPlaneDetectionController : MonoBehaviourPunCallbacks
         m_basicSpawnManager.canSlappa = true;
         m_GameplayManager.hasRoundStarted = true;
         m_GameplayLTDemoManager.hasRoundStarted = true;
+        m_ManualManager.AssignManuals();
+        m_ManualManager.AddNewManualSection();
     }
     
     public void OnQuitCheck()
